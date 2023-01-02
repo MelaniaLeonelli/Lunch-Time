@@ -1,0 +1,10 @@
+COMANDI GIT BASH
+RIPRISTINARE FILE ELIMINATI: git checkout
+
+
+AGGIUNGERE QUALCOSA: git add . 
+                     git commit -m "scriviqualcosa"
+                     git push
+
+
+PRENDERE FILE: git pull
