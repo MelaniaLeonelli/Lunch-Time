@@ -23,7 +23,7 @@ public class DriverManagerConnectionPool {
 	 private static Connection createDBConnection() throws SQLException {
 		 Connection newConnection = null;
 		 String url = "jdbc:mysql://127.0.0.1:3306/?user=root";
-		 String user = "sisi";
+		 String user = "sisisi";
 		 String pass = "password";
 		 newConnection = DriverManager.getConnection(url, user, pass);
 		 newConnection.setAutoCommit(false);
