@@ -12,7 +12,7 @@
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic?ts=<?=time()?>&quot" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
     </head>
@@ -139,6 +139,7 @@
                     <div class="col-lg-4 ms-auto"><p class="lead">LunchTime è una piattaforma web di gestione della mensa ed è dedicata particolarmente agli studenti universitari di Unisa. Il nome "LunchTime" è ispirato proprio al pranzo universitario.
 					</p></div>
                     <div class="col-lg-4 me-auto"><p class="lead">Qui potrai visualizzare il tuo profilo, i prodotti della nostra mensa e acquistare online il tuo pranzo per poter saltare la fila!</p></div>
+                   
                 </div>
                 <!-- About Section Button-->
                 <div class="text-center mt-4">
