@@ -7,10 +7,11 @@ public class Prodotto{
 	float prezzo;
 	String immagine;
 	String descrizione;
-	Boolean disponibile;
+	int disponibile;
 	
-	public Prodotto(String idprodotto, String nome, String categoria, float prezzo, String immagine, String descrizione, Boolean disponibile){
+	public Prodotto(String idprodotto, String nome, String categoria, float prezzo, String immagine, String descrizione, int disponibile){
 		this.idprodotto=idprodotto;
+		this.nome=nome;
 		this.categoria=categoria;
 		this.prezzo=prezzo;
 		this.immagine=immagine;
@@ -23,6 +24,14 @@ public class Prodotto{
 
 	public void setIdprodotto(String idprodotto) {
 		this.idprodotto = idprodotto;
+	}
+	
+	public String getNome() {
+		return nome;
+	}
+	
+	public void setNome(String nome) {
+		this.nome=nome;
 	}
 	
 	public String getCategoria() {
@@ -57,16 +66,16 @@ public class Prodotto{
 		this.descrizione = descrizione;
 	}
 	
-	public Boolean getDisponibile() {
+	public int getDisponibile() {
 		return disponibile;
 	}
 
-	public void setDisponibile(Boolean disponibile) {
+	public void setDisponibile(int disponibile) {
 		this.disponibile = disponibile;
 	}
 	
 	@Override 
 	public String toString(){
-		return "Prodotto [idprodotto="+idprodotto+",categoria="+categoria+",Prezzo="+prezzo+",Immagine="+immagine+",Descrizione="+descrizione+",Disponibile="+disponibile+"]";
+		return "Prodotto [idprodotto="+idprodotto+",nome"+nome+",categoria="+categoria+",Prezzo="+prezzo+",Immagine="+immagine+",Descrizione="+descrizione+",Disponibile="+disponibile+"]";
 	}
 }
