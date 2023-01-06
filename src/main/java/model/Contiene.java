@@ -12,16 +12,19 @@ public String getIdprootto(){
 	return idprodotto;
 }
 
-public void setIdprodotto(){
+public void setIdprodotto(String idprodotto){
 	this.idprodotto=idprodotto;
 }
 
 public String getEmailutente(){
 	return emailutente;
 }
-public void setEmailutente(){
+public void setEmailutente(String emailutente){
 	this.emailutente=emailutente;
 }
 @Override
-public String toString()
+public String toString(){
+	return "Contiene [idprodotto="+idprodotto+",emailutente="+emailutente+"]";
+	
+  }
 }
