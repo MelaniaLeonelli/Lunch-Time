@@ -3,7 +3,7 @@
 <head>
 <meta charset="ISO-8859-1">
 </head>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/styleH.css">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -27,8 +27,10 @@
 				</a>
 
 				<form action="index.jsp" method="POST">
-					<input type="image" src="logo.ico" id="logo_margin" width="60%"
+				<div class="ruota">
+					<input type="image" src="logo.png" id="logo_margin" width="60%"
 						height="55%" margin-left: 20px>
+						</div>
 				</form>
 
 				<form action="index.jsp" method="POST">
@@ -85,25 +87,15 @@
 					id="navbarsExample08">
 					<ul class="navbar-nav">
 						<li class="nav-item"><a class="nav-link"
-							href="SearchbyCategoryServlet?categoria=PS4">PS4</a></li>
+							href="Catalogo.jsp">Catalogo</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="SearchbyCategoryServlet?categoria=PS5">PS5</a></li>
+							href="Preferiti.jsp">Preferiti</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="SearchbyCategoryServlet?categoria=Origin">Origin</a></li>
+							href="Profilo.jsp">Profilo</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="SearchbyCategoryServlet?categoria=ONE">XBOX ONE</a></li>
+							href="RicaricaTessera.jsp">Saldo</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="SearchbyCategoryServlet?categoria=Nintendo">Nintendo</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="SearchbyCategoryServlet?categoria=Steam">Steam</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="SearchbyCategoryServlet?categoria=EpicGames">Epic Games</a>
-						</li>
-						<li class="nav-item"><a class="nav-link"
-							href="SearchbyCategoryServlet?categoria=Ubisoft">Ubisoft
-								Connect</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="SearchbyCategoryServlet?categoria=XBOX">XBOX</a></li>
+							href="Carrello.jsp">Carrello</a></li>
 					</ul>
 				</div>
 			</div>
