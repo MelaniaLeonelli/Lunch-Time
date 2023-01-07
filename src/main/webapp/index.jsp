@@ -16,6 +16,7 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/style.css" rel="stylesheet" />
         <link rel="stylesheet" href="css/styleH.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     </head>
     <body>
         <!-- Navigation-->
@@ -39,7 +40,9 @@
         <header class="masthead bg-warning text-white text-center">
             <div class="container d-flex align-items-center flex-column">
                 <!-- Masthead Avatar Image-->
-                <img class="masthead-avatar mb-5" src="logo.png" alt="..."/>
+                <div class="zoom pic">
+                <img class="w3-border w3-padding" src="mappa.png" alt="..." height=200/>
+                </div>
                 <!-- Masthead Heading-->
                 <h1 class="masthead-heading text-uppercase mb-0">LunchTime</h1>
                 <!-- Icon Divider-->
