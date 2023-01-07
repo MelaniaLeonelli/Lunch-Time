@@ -38,10 +38,10 @@
 	height: 100%;
 }
 
-@media ( min-width : 990px) {
+@media ( min-width : 1000px) {
 	#headerButton {
 		position: absolute;
-		top: 20px;
+		top: 30px;
 		right: 14px;
 		display: -webkit-inline-box;
 	}
@@ -451,7 +451,7 @@ transform: rotate(180deg);
 
 .zoom img {
        height: 300px;
-       width: 300px;
+       width: 400px;
        -webkit-transition: all 1s ease;
        -moz-transition: all 1s ease;
        -o-transition: all 1s ease;
@@ -459,6 +459,6 @@ transform: rotate(180deg);
        transition: all 1s ease;
  }
  .zoom img:hover {
-       width: 400px;
+       width: 500px;
        height: 400px;
  } 

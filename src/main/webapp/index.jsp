@@ -41,7 +41,7 @@
             <div class="container d-flex align-items-center flex-column">
                 <!-- Masthead Avatar Image-->
                 <div class="zoom pic">
-                <img class="w3-border w3-padding" src="mappa.png" alt="..." height=200/>
+                <img class="w3-border w3-padding" src="mappa.png" alt="..." height=400/>
                 </div>
                 <!-- Masthead Heading-->
                 <h1 class="masthead-heading text-uppercase mb-0">LunchTime</h1>

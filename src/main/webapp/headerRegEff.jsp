@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 </head>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/styleH.css">
 <link rel="stylesheet" href="css/dropdown.css">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
@@ -30,7 +30,7 @@
 				</a>
 
 				<form action="index.jsp" method="POST">
-					<input type="image" src="logo.ico" id="logo_margin" width="0%"
+					<input type="image" src="logo.png" id="logo_margin" width="0%"
 						height="0%" margin-left: 20px>
 				</form>
 

@@ -30,7 +30,7 @@
 				</a>
 
 				<form action="index.jsp" method="POST">
-					<input type="image" src="logo.ico" id="logo_margin" width="60%"
+					<input type="image" src="logo.png" id="logo_margin" width="60%"
 						height="55%" margin-left: 20px>
 				</form>
 
