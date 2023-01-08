@@ -62,7 +62,7 @@ public class UtenteDAO {
 			while(rs.next()) {
 				u.setEmailutente(rs.getString("emailutente"));
 				u.setNomeutente(rs.getString("Nomeutente"));
-				u.setRuolo(rs.getString("ruolo"));
+				u.setRuolo(Integer.parseInt(rs.getString("ruolo")));
 			}
 		} catch (SQLException e1) {
 			return null;
