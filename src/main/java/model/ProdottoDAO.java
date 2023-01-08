@@ -21,10 +21,10 @@ public class ProdottoDAO {
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
 				Prodotto p = new Prodotto();
-				p.setNome(rs.getString("nome"));
 				p.setIdprodotto(rs.getString("idprodotto"));
+				p.setNome(rs.getString("nome"));
 				p.setCategoria(rs.getString("categoria"));
-				p.setPrezzo(Double.parseDouble(rs.getString("prezzo")));
+				p.setPrezzo(Float.parseFloat(rs.getString("prezzo")));
 				p.setImmagine(rs.getString("immagine"));
 				p.setDescrizione(rs.getString("descrizione"));
 				p.setDisponibile(Integer.parseInt(rs.getString("disponibile")));
@@ -47,10 +47,10 @@ public class ProdottoDAO {
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
 				Prodotto p = new Prodotto();
-				p.setNome(rs.getString("nome"));
 				p.setIdprodotto(rs.getString("idprodotto"));
+				p.setNome(rs.getString("nome"));
 				p.setCategoria(rs.getString("categoria"));
-				p.setPrezzo(Double.parseDouble(rs.getString("prezzo")));
+				p.setPrezzo(Float.parseFloat(rs.getString("prezzo")));
 				p.setImmagine(rs.getString("immagine"));
 				p.setDescrizione(rs.getString("descrizione"));
 				p.setDisponibile(Integer.parseInt(rs.getString("disponibile")));
@@ -102,7 +102,7 @@ public class ProdottoDAO {
 		
 	}
 	
-	public void deleteProduct(String codProdotto) throws ClassNotFoundException, SQLException {
+	public void deleteProduct(String idProdotto) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
@@ -112,20 +112,20 @@ public class ProdottoDAO {
 		
 	}
 	
-	public Prodotto getProduct(String codProdotto) throws SQLException, ClassNotFoundException {
+	public Prodotto getProduct(String idProdotto) throws SQLException, ClassNotFoundException {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
 		stmt = con.prepareStatement("SELECT nome, idprodotto, categoria, prezzo, immagine, descrizione, disponibile FROM prodotto WHERE idProdotto = ?");
-		stmt.setString(1, codProdotto);
+		stmt.setString(1, idProdotto);
 		ResultSet rs = stmt.executeQuery();
 		try {
 			while(rs.next()) {
 				Prodotto p = new Prodotto();
 				p.setNome(rs.getString("nome"));
-				p.setCodprodotto(rs.getString("idprodotto"));
+				p.setIdprodotto(rs.getString("idprodotto"));
 				p.setCategoria(rs.getString("categoria"));
-				p.setPrezzo(Float.parseFloat).getString("prezzo")));
+				p.setPrezzo(Float.parseFloat(rs.getString("prezzo")));
 				p.setImmagine(rs.getString("immagine"));
 				p.setDescrizione(rs.getString("descrizione"));
 				p.setDisponibile(Integer.parseInt(rs.getString("disponibile")));
@@ -139,7 +139,7 @@ public class ProdottoDAO {
 		return null;
 	}
 	
-	public void rimuoviDisponibile(String codProdotto) throws ClassNotFoundException, SQLException {
+	public void rimuoviDisponibile(String idProdotto) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
@@ -168,7 +168,7 @@ public class ProdottoDAO {
 		return null;
 	}
 	
-	public void updateProduct(String idProdotto, String name, String category, float price, String decription) throws SQLException, ClassNotFoundException{
+	public void updateProduct(String idProdotto, String name, String category, float price, String description) throws SQLException, ClassNotFoundException{
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
@@ -177,7 +177,7 @@ public class ProdottoDAO {
 		stmt.setString(2, category);
 		stmt.setFloat(3, price);
 		stmt.setString(4, description);
-		stmt.setString(5, idprodotto);
+		stmt.setString(5, idProdotto);
 		stmt.executeUpdate();
 	}
 }

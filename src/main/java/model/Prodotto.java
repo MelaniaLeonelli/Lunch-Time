@@ -9,15 +9,7 @@ public class Prodotto{
 	String descrizione;
 	int disponibile;
 	
-	public Prodotto(String idprodotto, String nome, String categoria, float prezzo, String immagine, String descrizione, int disponibile){
-		this.idprodotto=idprodotto;
-		this.nome=nome;
-		this.categoria=categoria;
-		this.prezzo=prezzo;
-		this.immagine=immagine;
-		this.descrizione=descrizione;
-		this.disponibile=disponibile;
-	}
+
 	public String getIdprodotto() {
 		return idprodotto;
 	}
