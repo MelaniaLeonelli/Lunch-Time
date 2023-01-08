@@ -36,7 +36,7 @@ public class TesseraDAO {
 	}
 	
 
-	public float ricaricaTessera(String e,float r) throws SQLException, ClassNotFoundException {
+	public void ricaricaTessera(String e,float r) throws SQLException, ClassNotFoundException {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection(URL, USER, PASS);
 			PreparedStatement stmt;
@@ -44,15 +44,8 @@ public class TesseraDAO {
 			stmt = con.prepareStatement("UPDATE tessera SET saldo= saldo + ? FROM tessera WHERE tessera.codicetessera = ?");
 			stmt.setFloat(1, r);
 			stmt.setString(2, e);
-			ResultSet rs = stmt.executeQuery();
-			try {
-				while(rs.next()) {
-					return true;
-				}
-			} catch (SQLException e1) {
-				return false;
-			}
-			return false;
+		    stmt.executeUpdate();
+			
 		}
 	
 	
