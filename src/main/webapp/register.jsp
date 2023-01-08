@@ -59,19 +59,19 @@
 			
 			<br>
 			<div class="form-check">
-  				<input class="form-check-input" type="radio" id="flexRadioDefault1">
+  				<input class="form-check-input" type="radio" id="categoria">
   				<label class="form-check-label" for="flexCheckDefault1">
    				 Non beneficiario
   				</label>
 			</div>
 			<div class="form-check">
-  				<input class="form-check-input" type="radio" id="flexCheckDefault2">
+  				<input class="form-check-input" type="radio" id="categoria">
   				<label class="form-check-label" for="flexCheckDefault2">
     			Idoneo
   				</label>
 			</div>
 			<div class="form-check">
-  				<input class="form-check-input" type="radio" id="flexCheckDefault3">
+  				<input class="form-check-input" type="radio" id="categoria">
   				<label class="form-check-label" for="flexCheckDefault3">
     			Beneficiario
   				</label>
