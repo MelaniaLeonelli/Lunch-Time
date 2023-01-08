@@ -15,20 +15,20 @@ public class OrdineDAO {
 	public static String USER = "sisisi";
 	public static String PASS = "password";
 
-	public ArrayList<Ordine> getOrders(String e) throws ClassNotFoundException{
+	public ArrayList<Ordine> getOrders(String em) throws ClassNotFoundException{
 		ArrayList<Ordine> ordini = new ArrayList<Ordine>();
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection(URL, USER, PASS);
 			PreparedStatement stmt;
 			stmt = con.prepareStatement("SELECT CodOrdine, Data, ImportoTotale, emailutente FROM Ordine WHERE Ordine.emailutente = ?");
-			stmt.setString(1, e);
+			stmt.setString(1, em);
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
 				Ordine or = new Ordine();
-				or.setCodOrdine(rs.getInt("CodOrdine"));
+				or.setCodordine(rs.getInt("CodOrdine"));
 				or.setData(rs.getString("Data"));
-				or.setImportoTotale(Double.parseDouble(rs.getString("ImportoTotale")));
+				or.setImportototale(Double.parseDouble(rs.getString("ImportoTotale")));
 				or.setEmailutente(rs.getString("emailutente"));
 				ordini.add(or);
 			}
@@ -49,7 +49,7 @@ public class OrdineDAO {
 			rs = stmt.executeQuery();
 			while(rs.next()) {
 				Ordine or = new Ordine();
-				or.setCodOrdine(rs.getInt("CodOrdine"));
+				or.setCodordine(rs.getInt("CodOrdine"));
 				or.setData(rs.getString("Data"));
 				or.setEmailutente(rs.getString("emailutente"));
 				ordini.add(or);
@@ -71,9 +71,9 @@ public class OrdineDAO {
 			rs = stmt.executeQuery();
 			Ordine or = new Ordine();
 			while(rs.next()) {
-				or.setCodOrdine(rs.getInt("CodOrdine"));
+				or.setCodordine(rs.getInt("CodOrdine"));
 				or.setData(rs.getString("Data"));
-				or.setImportoTotale(Double.parseDouble(rs.getString("ImportoTotale")));
+				or.setImportototale(Double.parseDouble(rs.getString("ImportoTotale")));
 				or.setEmailutente(rs.getString("emailutente"));
 			}
 			return or;

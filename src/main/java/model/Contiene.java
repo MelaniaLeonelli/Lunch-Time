@@ -3,11 +3,9 @@ package model;
 public class Contiene{
 	String idprodotto;
 	String emailutente;
-
-public Contiene(String idprodotto,String emailutente){
-	this.idprodotto=idprodotto;
-	this.emailutente=emailutente;
-   }
+    int quantità;
+    double importoTotale;
+    
 public String getIdprootto(){
 	return idprodotto;
 }
@@ -22,9 +20,23 @@ public String getEmailutente(){
 public void setEmailutente(String emailutente){
 	this.emailutente=emailutente;
 }
+
+public int getQuantita() {
+	return quantità;
+}
+public void setQuantita(int quantita) {
+	this.quantità = quantita;
+}
+
+public double getimportoTotale() {
+	return importoTotale;
+}
+public void setimportoTotale(double importoTotale) {
+	this.importoTotale = importoTotale;
+}
 @Override
 public String toString(){
-	return "Contiene [idprodotto="+idprodotto+",emailutente="+emailutente+"]";
+	return "Contiene [idprodotto="+idprodotto+",emailutente="+emailutente+",quantità="+quantità+",importoTotale="+importoTotale+"]";
 	
   }
 }
