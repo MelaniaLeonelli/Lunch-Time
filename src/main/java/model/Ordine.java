@@ -13,4 +13,37 @@ public class Ordine{
 		this.emailutente=emailutente;
 		
 	}
+	
+	public int getCodordine(){
+		return codordine;
+	}
+	public void setCodordine(int codordine){
+		this.codordine=codordine;
+	}
+	
+	public String getData(){
+		return data;
+	}
+	public void setData(String data){
+		this.data=data;
+	}
+	
+	public float getImportototale(){
+		return importototale;
+	}
+	public void setImportototale(float importototale){
+		this.importototale=importototale;
+	}
+	
+	public String getEmailutente(){
+		return emailutente;
+	}
+	public void setEmailutente(String emailutente){
+		this.emailutente=emailutente;
+	}
+	
+	@Override
+	public String toString(){
+		return "Ordine [ codordine="+codordine+",data="+data+",importototale="+importototale+",emailutente"+emailutente+"]";
+	}
 }
