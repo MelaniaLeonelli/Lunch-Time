@@ -1,0 +1,281 @@
+@charset "ISO-8859-1";
+
+#form .form-control:focus {
+	background: #ccccff;
+}
+
+input#cf {
+	text-transform: uppercase;
+}
+
+#cartBtn { 
+	-bs-btn-color: #fff; 
+	-bs-btn-bg: rgb(255, 0, 0); 
+	-bs-btn-border-color: rgb(255, 0, 0); 
+	-bs-btn-hover-color: #f2f2f2; 
+	-bs-btn-hover-bg: #FF0000; 
+	-bs-btn-hover-border-color: #FF0000; 
+	-bs-btn-focus-shadow-rgb: 217, 164, 6; 
+	-bs-btn-active-color: #000; 
+	-bs-btn-active-bg: #c3aaee; 
+	-bs-btn-active-border-color: #FF0000; 
+	-bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); 
+	-bs-btn-disabled-color: #000; 
+	-bs-btn-disabled-bg: #ffc107; 
+	-bs-btn-disabled-border-color: #ffc107;
+	margin-left: 10px;
+}
+
+#registerBtn { 
+	-bs-btn-bg: #212529; 
+	-bs-btn-hover-color: #f2f2f2; 
+	-bs-btn-hover-bg: #804cdc; 
+	-bs-btn-hover-border-color: #a57fe6; 
+	-bs-btn-focus-shadow-rgb: 217, 164, 6; 
+	-bs-btn-active-color: #000; 
+	-bs-btn-active-bg: #c3aaee; 
+	-bs-btn-active-border-color: #a57fe6; 
+	-bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); 
+	-bs-btn-disabled-color: #000; 
+	-bs-btn-disabled-bg: #ffc107; 
+	-bs-btn-disabled-border-color: #ffc107; 
+	-bs-btn-border-color: #212529;
+	margin-left: 0px;
+	margin-top: 25px;
+	margin-bottom: 10px;
+}
+
+#loginBtn { 
+	-bs-btn-bg: #212529; 
+	-bs-btn-hover-color: #f2f2f2; 
+	-bs-btn-hover-bg: #804cdc; 
+	-bs-btn-hover-border-color: #a57fe6; 
+	-bs-btn-focus-shadow-rgb: 217, 164, 6; 
+	-bs-btn-active-color: #000; 
+	-bs-btn-active-bg: #c3aaee; 
+	-bs-btn-active-border-color: #a57fe6; 
+	-bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); 
+	-bs-btn-disabled-color: #000; 
+	-bs-btn-disabled-bg: #ffc107; 
+	-bs-btn-disabled-border-color: #ffc107; 
+	-bs-btn-border-color: #212529;
+	margin-right: 2px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	color: white;
+}
+
+.form-signin {
+	max-width: 482px;
+	padding: 92px;
+}
+
+#registerLink {
+	color: #ffffff;
+}
+
+#purpleLink {
+	color: #804cdc;
+}
+
+#logintext {
+	font-weight: 500 !important;
+}
+
+#loginWrong {
+	margin-bottom: -5rem !important;
+	font-weight: 500 !important;
+}
+
+#registerEff {
+	margin-top: 20px;
+	margin-bottom: 10px;
+	font-weight: 500 !important;
+}
+
+#loginWrongMessage {
+	margin-top: 30px;
+}
+
+#registertext {
+	font-weight: 500 !important;
+}
+
+#formdiv {
+	margin-bottom: 10px;
+}
+
+#footerpos {
+	padding-top: 4rem !important;
+}
+
+#footerposLogRes {
+	padding-top: 17.5rem !important;
+}
+
+#footerposOrdEff {
+	padding-top: 26rem !important;
+}
+
+#footerposRegEff {
+	padding-top: 13rem !important;
+}
+
+#corpo {
+	background: -moz-linear-gradient(45deg, #ffbf00);
+	background: -webkit-linear-gradient(45deg, #ffbf00 0%, #ffbf00 29%, #d911f2 66%,
+		#ffa079 100%);
+	background: linear-gradient(45deg, #ffbf00 0%, #ffbf00 29%, #ffc107 66%, #e1c86f
+		100%);
+	background-size: 100% 1%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
+	/*min-height: calc(100vh - 2rem);*/
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: space-evenly;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	position: relative;
+}
+
+corpoWhite {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: space-evenly;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	position: relative;
+}
+
+#corpo::before, #corpo::after {
+	content: "";
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	background: rgba(255, 255, 255, 0.07);
+	left: -20vmin;
+	top: -20vmin;
+	animation: morph 15s linear infinite alternate, spin 20s linear infinite;
+	z-index: 1;
+	will-change: border-radius, transform;
+	transform-origin: 55% 55%;
+	pointer-events: none;
+}
+
+#corpo::after {
+	width: 100%;
+	height: 100%;
+	left: auto;
+	right: -10vmin;
+	top: auto;
+	bottom: 0;
+	animation: morph 10s linear infinite alternate, spin 26s linear infinite
+		reverse;
+	transform-origin: 20% 20%;
+}
+
+
+-webkit-keyframes Gradient {
+	background-position: 0 50%
+}
+
+
+
+-moz-keyframes Gradient {
+	background-position: 0 50%
+}
+
+
+
+
+
+keyframes Gradient {
+	background-position: 0 50%
+}
+
+
+keyframes morph {
+	border-radius: 40% 60% 60% 40%/70% 30% 70% 30%;
+}
+
+
+.st0 {
+	display: none;
+}
+
+.st1 {
+	display: inline;
+}
+
+.st2 {
+	opacity: 0.29;
+}
+
+.st3 {
+	fill: #FFFFFF;
+}
+
+.st4 {
+	clip-path: url(#SVGID_2_);
+	fill: #FFFFFF;
+}
+
+.st5 {
+	clip-path: url(#SVGID_4_);
+}
+
+.st6 {
+	clip-path: url(#SVGID_6_);
+}
+
+.st7 {
+	clip-path: url(#SVGID_8_);
+}
+
+.st8 {
+	clip-path: url(#SVGID_10_);
+}
+
+.st9 {
+	fill: none;
+}
+
+.st10 {
+	clip-path: url(#SVGID_12_);
+}
+
+.st11 {
+	opacity: 0.7;
+}
+
+.st12 {
+	clip-path: url(#SVGID_14_);
+}
+
+.st13 {
+	opacity: 0.2;
+}
+
+.st14 {
+	clip-path: url(#SVGID_16_);
+}
+
+.st15 {
+	opacity: 0.3;
+	fill: #ffbf00;
+	enable-background: new;
+}
+
+.ruota:hover {
+transform: rotate(180deg);
+
+}
+
+@keyframes ruota {
+    from {top: 0px;}
+    to {top: 1200px;}
+}

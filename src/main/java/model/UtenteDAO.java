@@ -18,7 +18,7 @@ public class UtenteDAO {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
-		stmt = con.prepareStatement("INSERT INTO utente VALUES (?, ?, SHA2(CONCAT(?, 'criptalo'), 512), 0)");
+		stmt = con.prepareStatement("INSERT INTO utente VALUES (?, ?, SHA2(CONCAT(?, 'criptalo'), 224), 0)");
 		stmt.setString(1, email);     
 		stmt.setString(2, nu);
 		stmt.setString(3, pw);      
@@ -29,7 +29,7 @@ public class UtenteDAO {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
-			stmt = con.prepareStatement("SELECT emailutente, Password, ruolo FROM utente WHERE utente.emailutente = ? AND utente.Password = SHA2(CONCAT(?, 'criptalo'), 512)");
+			stmt = con.prepareStatement("SELECT emailutente, Password, ruolo FROM utente WHERE utente.emailutente = ? AND utente.Password = SHA2(CONCAT(?, 'criptalo'), 224)");
 			stmt.setString(1, e);     
 			stmt.setString(2, p);
 			ResultSet rs = stmt.executeQuery();

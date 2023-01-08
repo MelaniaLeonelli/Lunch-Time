@@ -30,8 +30,10 @@
 				</a>
 
 				<form action="index.jsp" method="POST">
+				<div class="ruota">
 					<input type="image" src="logo.png" id="logo_margin" width="50%"
 						height="45%" margin-left: 20px>
+						</div>
 				</form>
 
 				<form action="index.jsp" method="POST">
