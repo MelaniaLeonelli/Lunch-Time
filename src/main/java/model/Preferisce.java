@@ -4,10 +4,6 @@ public class Preferisce {
 	String idprodotto;
 	String emailutente;
 	
-	public Preferisce(String idprodotto, String emailutente){
-		this.idprodotto = idprodotto;
-		this.emailutente = emailutente;
-	}
 	
 	public String getIdprodotto(){
 		return idprodotto;
