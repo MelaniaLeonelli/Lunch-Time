@@ -17,63 +17,66 @@
 <body>
 
 	<header class="p-3 bg-dark text-white">
+		<div class="dropdown" id="admin">
+			<button class="btn btn-outline-light me-2" id="loginBtn">Admin</button>
+			<div class="dropdown-content">
+				<ul
+					class="dropdown-menu dropdown-menu-dark d-block position-static mx-0 border-0 shadow w-220px">
+					<li><a class="dropdown-item d-flex gap-2 align-items-center"
+						href="addProduct.jsp"> <svg class="bi" width="16" height="16">
+								<use xlink:href="adminpage/addProduct.jsp"></use></svg> Aggiungi un
+							prodotto al catalogo
+					</a></li>
+					<li><a class="dropdown-item d-flex gap-2 align-items-center"
+						href="deleteProduct.jsp"> <svg class="bi" width="16"
+								height="16">
+								<use xlink:href="adminpage/deleteProduct.jsp"></use></svg> Rimuovi un
+							prodotto dal catalogo
+					</a></li>
+					<li>
+					<li><a class="dropdown-item d-flex gap-2 align-items-center"
+						href="editProducts.jsp"> <svg class="bi" width="16"
+								height="16">
+								<use xlink:href="adminpage/editProducts.jsp"></use></svg> Modifica un
+							prodotto in catalogo
+					</a></li>
+					<li><a class="dropdown-item d-flex gap-2 align-items-center"
+						href="../AllOrdersServlet"> <svg class="bi" width="16"
+								height="16">
+								<use xlink:href="../AllOrdersServlet"></use></svg> Visualizza tutti
+							gli ordini effettuati
+					</a></li>
+				</ul>
+			</div>
+		</div>
 		<div class="container">
 			<div
 				class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 				<a href="/"
 					class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-					<svg class="bi me-2" width="40" height="32" role="img"
+					<svg class="bi me-2" width="1" height="1" role="img"
 						aria-label="Bootstrap">
 						<use xlink:href="#bootstrap"></use></svg>
 				</a>
 
-				<form action="index.jsp" method="POST">
-				<div class="ruota">
-					<input type="image" src="logo.png" id="logo_margin" width="60%"
+				<form action="../index.jsp" method="POST">
+					<input type="image" src="../logo.png" id="logo_margin" width="60%"
 						height="55%" margin-left: 20px>
-						</div>
 				</form>
 
-				<form action="index.jsp" method="POST">
-					<input type="image" src="logo2.png" alt="logo" id="logo">
+				<form action="../index.jsp" method="POST">
+					<input type="image" src="../logo2.png" alt="logo" id="logo">
 				</form>
-
 
 				<div class="text-end" id="headerButton">
-					<div class="dropdown">
-						<button class="btn btn-outline-light me-2" id="socialBtnSmall">Social</button>
-						<div class="dropdown-content">
-							<ul
-								class="dropdown-menu dropdown-menu-dark d-block position-static mx-0 border-0 shadow w-220px">
-								<li><a
-									class="dropdown-item d-flex gap-2 align-items-center"
-									href="https://www.facebook.com"> <svg class="bi" width="16"
-											height="16">
-											<use xlink:href="www.facebook.com"></use></svg> Facebook
-								</a></li>
-								<li><a
-									class="dropdown-item d-flex gap-2 align-items-center"
-									href="https://www.instagram.com"> <svg class="bi"
-											width="16" height="16">
-											<use xlink:href="#https://www.instagram.com"></use></svg> Instagram
-								</a></li>
-								<li><a
-									class="dropdown-item d-flex gap-2 align-items-center"
-									href="https://www.twitter.com"> <svg class="bi" width="16"
-											height="16">
-											<use xlink:href="#https://www.twitter.com"></use></svg> Twitter
-								</a></li>
-							</ul>
-						</div>
-					</div>
-					<button type="button" class="btn btn-outline-light me-2"
-						id="loginBtnSmall" onclick="window.location.href='login.jsp'">Login</button>
-					<button type="button" class="btn btn-warning" id="registerBtnSmall"
-						onclick="window.location.href='register.jsp'">Registrati</button>
+
+					<form action="Logout" method="post">
+						<input type="submit" class="btn btn-outline-light me-2"
+							value="Logout">
+					</form>
 				</div>
 			</div>
 		</div>
-
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
 			aria-label="Tenth navbar example">
 			<div class="container-fluid">
@@ -84,7 +87,7 @@
 					<span class="navbar-toggler-icon"></span>
 				</button>
 
-				<div class="collapse navbar-collapse justify-content-md-center"
+					<div class="collapse navbar-collapse justify-content-md-center"
 					id="navbarsExample08">
 					<ul class="navbar-nav">
 						<li class="nav-item"><a class="nav-link"
@@ -101,8 +104,6 @@
 				</div>
 			</div>
 		</nav>
-
-
 	</header>
 
 </body>

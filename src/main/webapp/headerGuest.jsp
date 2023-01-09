@@ -4,6 +4,8 @@
 <meta charset="ISO-8859-1">
 </head>
 <link rel="stylesheet" href="css/styleH.css">
+<link rel="stylesheet" href="css/dropdown.css">
+
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -40,7 +42,7 @@
 
 				<div class="text-end" id="headerButton">
 					<div class="dropdown">
-						<button class="btn btn-outline-light me-2" id="socialBtnSmall">Social</button>
+						<button class="btn btn-outline-light me-2" id="loginBtn">Social</button>
 						<div class="dropdown-content">
 							<ul
 								class="dropdown-menu dropdown-menu-dark d-block position-static mx-0 border-0 shadow w-220px">
@@ -66,12 +68,13 @@
 						</div>
 					</div>
 					<button type="button" class="btn btn-outline-light me-2"
-						id="loginBtnSmall" onclick="window.location.href='login.jsp'">Login</button>
-					<button type="button" class="btn btn-warning" id="registerBtnSmall"
+						id="loginBtn" onclick="window.location.href='login.jsp'">Login</button>
+					<button type="button" class="btn btn-warning" id="registerBtn"
 						onclick="window.location.href='register.jsp'">Registrati</button>
 				</div>
 			</div>
 		</div>
+
 
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
 			aria-label="Tenth navbar example">
@@ -96,6 +99,7 @@
 							href="RicaricaTessera.jsp">Saldo</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="Carrello.jsp">Carrello</a></li>
+							
 					</ul>
 				</div>
 			</div>
