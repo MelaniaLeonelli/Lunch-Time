@@ -12,7 +12,7 @@ public class ContieneDAO {
 	public static String USER = "sisisi";
 	public static String PASS = "password";
 	
-	public void addToCart(String em, String IdProdotto, int quantità, double importoTotale) throws ClassNotFoundException, SQLException {
+	public void addToCart(String em, String IdProdotto, int quantita, double importoTotale) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;

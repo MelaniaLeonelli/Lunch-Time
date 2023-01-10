@@ -52,7 +52,6 @@
     		UtenteDAO uDAO = new UtenteDAO();
     		or = orDAO.getOrderByCode(ordCode);
     		String emailutenteAcquirente = or.getEmailutente();
-    		u = uDAO.getUserByEmailutente(emailutenteAcquirente);
             int i = 0;
             double tot = 0.0;%>
 

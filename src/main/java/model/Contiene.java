@@ -5,10 +5,10 @@ public class Contiene{
 	String idprodotto;
 	String emailutente;
 	double importoTotale;
-	int quantità;
+	int quantita;
 
 
-public String getIdprootto(){
+public String getIdprodotto(){
 	return idprodotto;
 }
 
@@ -24,10 +24,10 @@ public void setEmailutente(String emailutente){
 }
 
 public int getQuantita() {
-	return quantità;
+	return quantita;
 }
 public void setQuantita(int quantita) {
-	this.quantità = quantita;
+	this.quantita = quantita;
 }
 
 public double getimportoTotale() {
@@ -38,7 +38,7 @@ public void setimportoTotale(double importoTotale) {
 }
 @Override
 public String toString(){
-	return "Contiene [idprodotto="+idprodotto+",emailutente="+emailutente+",quantità="+quantità+",importototale"+importoTotale+"]";
+	return "Contiene [idprodotto="+idprodotto+",emailutente="+emailutente+",quantita="+quantita+",importototale"+importoTotale+"]";
 	
   }
 }
