@@ -5,6 +5,10 @@ public class Acquisto{
 	String codprodotto;
 	float costo;
 	
+public Acquisto() {
+		
+	}
+	
 	public Acquisto (int codordine, String codprodotto, float costo){
 		this.codordine=codordine;
 		this.codprodotto=codprodotto;
