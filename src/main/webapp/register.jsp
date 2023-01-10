@@ -15,7 +15,7 @@
 	integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
 	crossorigin="anonymous"></script>
 <script type="text/javascript" src="js/formcheck.js"></script>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/styleH.css">
 <link rel="stylesheet" href="css/loginstyle.css">
 <meta charset="UTF-8">
 <title>Registrati</title>
@@ -58,58 +58,16 @@
 			
 			
 			<br>
-			<div class="form-check">
-  				<input class="form-check-input" type="radio" id="categoria">
-<<<<<<< HEAD
-<<<<<<< HEAD
-  				<label class="form-check-label" for="flexCheckDefault1">
-=======
-  				<label class="form-check-label" for="categoria">
->>>>>>> b5f171113ed8691351bdd32889e44f1258214da2
-=======
-  				<label class="form-check-label" for="categoria">
->>>>>>> e1c0f993aa4f69713ab4375caa5dd025c631b829
-   				 Non beneficiario
-  				</label>
-			</div>
-			<div class="form-check">
-  				<input class="form-check-input" type="radio" id="categoria">
-<<<<<<< HEAD
-<<<<<<< HEAD
-  				<label class="form-check-label" for="flexCheckDefault2">
-=======
-  				<label class="form-check-label" for="categoria">
->>>>>>> b5f171113ed8691351bdd32889e44f1258214da2
-=======
-  				<label class="form-check-label" for="categoria">
->>>>>>> e1c0f993aa4f69713ab4375caa5dd025c631b829
-    			Idoneo
-  				</label>
-			</div>
-			<div class="form-check">
-  				<input class="form-check-input" type="radio" id="categoria">
-<<<<<<< HEAD
-<<<<<<< HEAD
-  				<label class="form-check-label" for="flexCheckDefault3">
-=======
-  				<label class="form-check-label" for="categoria">
->>>>>>> b5f171113ed8691351bdd32889e44f1258214da2
-=======
-  				<label class="form-check-label" for="categoria">
->>>>>>> e1c0f993aa4f69713ab4375caa5dd025c631b829
-    			Beneficiario
-  				</label>
-			</div>
-
-
-			<button id="registerBtn" class="w-100 btn btn-lg btn-primary"
-				type="submit">Registrati</button>
-
-			<div id="formdiv">
-				<label> <a href="login.jsp" id="loginLink">Hai già un
-						account? Accedi.</a>
-				</label>
-			</div>
+			<form action="/action_page.php">
+			
+ 				 <p>Seleziona la tua borsa di studio:</p>
+  					<input type="radio" id="categoria" name="categoria" value="1">
+ 					 <label for="categoria">idoneo</label><br>
+ 					 <input type="radio" id="categoria" name="categoria" value="2">
+					  <label for="categoria">non idoneo</label><br>
+					  <input type="radio" id="categoria" name="categoria" value="3">
+					  <label for="categoria">beneficiario</label>
+								
 
 		</form>
 
