@@ -1,6 +1,6 @@
 package controller;
 
-import java.io.IOException;
+import java.io.IOException; 
 import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.InfoUtenteDAO;
+import model.TesseraDAO;
 import model.UtenteDAO;
 
 /**
@@ -35,6 +35,7 @@ public class RegisterServlet extends HttpServlet {
 		
 		String email = request.getParameter("email");
 		UtenteDAO uDAO = new UtenteDAO();
+		TesseraDAO tDAO = new TesseraDAO();
 		RequestDispatcher dispatcher;
 		
 		try {
@@ -45,24 +46,23 @@ public class RegisterServlet extends HttpServlet {
 			}
 			else {
 				request.getSession().setAttribute("utenteEsistente", Boolean.FALSE);
-				String cf = request.getParameter("cf");
-				String surname = request.getParameter("surname");
-				String name = request.getParameter("name");
+				String em = request.getParameter("emailutente");
+				String nomeutente = request.getParameter("nomeutente");
 				String password = request.getParameter("password");
-				String address = request.getParameter("address");
-				String city = request.getParameter("city");
-				String cap = request.getParameter("cap");
-				String phone = request.getParameter("phone");
-
-				InfoUtenteDAO iuDAO = new InfoUtenteDAO();
+				String codicetessera = request.getParameter("codicetessera");
+				int categoria = Integer.parseInt(request.getParameter("categoria"));
 				
-				System.out.println(cf + surname + name + email + password);
+
+				
+				
+				System.out.println(em + nomeutente + password + codicetessera);
 				try {
-					uDAO.register(cf, surname, name, email, password);
+					uDAO.register(em, nomeutente, password);
+					tDAO.addTessera(codicetessera,categoria,em);
 				} catch (ClassNotFoundException | SQLException e) {
 					e.printStackTrace();
 				}
-				iuDAO.insertData(cf, address, city, cap, phone, 0);
+				//uDAO.insertData(cf, address, city, cap, phone, 0);
 				dispatcher = request.getRequestDispatcher("registerResult.jsp");
 				dispatcher.forward(request, response);
 			}

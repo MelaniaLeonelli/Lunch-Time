@@ -13,6 +13,17 @@ public class TesseraDAO {
 	public static String URL = "jdbc:mysql://127.0.0.1:3306/?user=root";
 	public static String USER = "sisisi";
 	public static String PASS = "password";
+	
+	public void addTessera(String email, int codice,int categoria) throws SQLException, ClassNotFoundException {
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection con = DriverManager.getConnection(URL, USER, PASS);
+		PreparedStatement stmt;
+		stmt = con.prepareStatement("INSERT INTO tessera VALUES (?, ?, 0, ?)");
+		stmt.setInt(1, codice);
+		stmt.setInt(2, categoria);     
+		stmt.setString(3, email);     
+		stmt.executeUpdate();
+	}
 
 	
 	public Tessera getTesseraData(String e) throws SQLException, ClassNotFoundException {
