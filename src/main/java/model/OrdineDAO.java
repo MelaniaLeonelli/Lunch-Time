@@ -12,10 +12,14 @@ import controller.DriverManagerConnectionPool;
 public class OrdineDAO {
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public static String URL = "\"jdbc:mysql://127.0.0.1:3306/?user=root\"";
 =======
 	public static String URL = "jdbc:mysql://127.0.0.1:3306/?user=root";
 >>>>>>> b5f171113ed8691351bdd32889e44f1258214da2
+=======
+	public static String URL = "jdbc:mysql://127.0.0.1:3306/?user=root";
+>>>>>>> e1c0f993aa4f69713ab4375caa5dd025c631b829
 	public static String USER = "sisisi";
 	public static String PASS = "password";
 
@@ -87,10 +91,14 @@ public class OrdineDAO {
 	}
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public void order(int CodOrdine, String emailutente, String data, double importoTotale) throws SQLException, ClassNotFoundException {
 =======
 	public void order(int CodOrdine, String em, String data, double importoTotale) throws SQLException, ClassNotFoundException {
 >>>>>>> b5f171113ed8691351bdd32889e44f1258214da2
+=======
+	public void order(int CodOrdine, String em, String data, double importoTotale) throws SQLException, ClassNotFoundException {
+>>>>>>> e1c0f993aa4f69713ab4375caa5dd025c631b829
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
@@ -98,12 +106,17 @@ public class OrdineDAO {
 		stmt.setInt(1, CodOrdine);
 		stmt.setString(2, data);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		stmt.setDouble(3, importoTotale);
 		stmt.setString(5, emailutente);
 =======
 		stmt.setDouble(4, importoTotale);
 		stmt.setString(5, em);
 >>>>>>> b5f171113ed8691351bdd32889e44f1258214da2
+=======
+		stmt.setDouble(4, importoTotale);
+		stmt.setString(5, em);
+>>>>>>> e1c0f993aa4f69713ab4375caa5dd025c631b829
 		stmt.executeUpdate();
 	}
 	

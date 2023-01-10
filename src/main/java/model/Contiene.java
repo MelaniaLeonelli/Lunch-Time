@@ -5,9 +5,19 @@ public class Contiene{
 	String idprodotto;
 	String emailutente;
 <<<<<<< HEAD
+<<<<<<< HEAD
     int quantità;
     double importoTotale;
     
+=======
+	double importoTotale;
+	int quantità;
+
+public Contiene(String idprodotto,String emailutente){
+	this.idprodotto=idprodotto;
+	this.emailutente=emailutente;
+   }
+>>>>>>> e1c0f993aa4f69713ab4375caa5dd025c631b829
 public String getIdprootto(){
 =======
 	double importoTotale;
@@ -53,10 +63,14 @@ public void setimportoTotale(double importoTotale) {
 @Override
 public String toString(){
 <<<<<<< HEAD
+<<<<<<< HEAD
 	return "Contiene [idprodotto="+idprodotto+",emailutente="+emailutente+",quantità="+quantità+",importoTotale="+importoTotale+"]";
 =======
 	return "Contiene [idprodotto="+idprodotto+",emailutente="+emailutente+",quantitï¿½="+quantita+",importototale"+importoTotale+"]";
 >>>>>>> b5f171113ed8691351bdd32889e44f1258214da2
+=======
+	return "Contiene [idprodotto="+idprodotto+",emailutente="+emailutente+",quantità="+quantità+",importototale"+importoTotale+"]";
+>>>>>>> e1c0f993aa4f69713ab4375caa5dd025c631b829
 	
   }
 }

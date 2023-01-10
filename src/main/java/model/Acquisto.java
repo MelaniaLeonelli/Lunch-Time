@@ -4,14 +4,6 @@ public class Acquisto{
 	int codordine;
 	String codprodotto;
 	float costo;
-	public Acquisto (){
-		
-	}
-	public Acquisto(String codprodotto, int codordine) {
-		this.codprodotto = codprodotto;
-		this.codordine = codordine;
-	}
-	
 	
 	public Acquisto (int codordine, String codprodotto, float costo){
 		this.codordine=codordine;
@@ -41,9 +33,12 @@ public class Acquisto{
     	
     }
     
+<<<<<<< HEAD
 
     public String toString() {
 =======
+=======
+>>>>>>> e1c0f993aa4f69713ab4375caa5dd025c631b829
     @Override
 	public String toString(){
     	return "Acquisto [codordine="+codordine+",codprodotto="+codprodotto+",costo="+costo+"]";

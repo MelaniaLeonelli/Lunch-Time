@@ -14,6 +14,7 @@
 	crossorigin="anonymous"></script>
 <script type="text/javascript" src="../sfondo.js"></script>
 <link rel="icon" type="image/x-icon" href="../icona.ico">
+<link rel="icon" type="image/x-icon" href="../logo.ico">
 <link rel="stylesheet" href="../css/styleH.css">
 <link rel="stylesheet" href="../css/styles.css">
 <link rel="stylesheet" href="../css/dropdown.css">

@@ -12,10 +12,14 @@ import controller.DriverManagerConnectionPool;
 public class AcquistoDAO {
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public static String URL = "\"jdbc:mysql://127.0.0.1:3306/?user=root\"";
 =======
 	public static String URL = "jdbc:mysql://127.0.0.1:3306/?user=root";
 >>>>>>> b5f171113ed8691351bdd32889e44f1258214da2
+=======
+	public static String URL = "jdbc:mysql://127.0.0.1:3306/?user=root";
+>>>>>>> e1c0f993aa4f69713ab4375caa5dd025c631b829
 	public static String USER = "sisisi";
 	public static String PASS = "password";
 

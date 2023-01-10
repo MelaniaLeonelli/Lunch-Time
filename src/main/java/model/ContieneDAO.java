@@ -9,6 +9,7 @@ import java.sql.SQLException;
 public class ContieneDAO {
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public static String URL = "\"jdbc:mysql://127.0.0.1:3306/?user=root\"";
 	public static String USER = "sisisi";
 	public static String PASS = "password";
@@ -21,10 +22,18 @@ public class ContieneDAO {
 	
 	public void addToCart(String em, String IdProdotto, int quantita, double importoTotale) throws ClassNotFoundException, SQLException {
 >>>>>>> b5f171113ed8691351bdd32889e44f1258214da2
+=======
+	public static String URL = "jdbc:mysql://127.0.0.1:3306/?user=root";
+	public static String USER = "sisisi";
+	public static String PASS = "password";
+	
+	public void addToCart(String em, String IdProdotto, int quantità, double importoTotale) throws ClassNotFoundException, SQLException {
+>>>>>>> e1c0f993aa4f69713ab4375caa5dd025c631b829
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
 		stmt = con.prepareStatement("INSERT INTO contiene VALUES(?, ?, '1', ?);");
+<<<<<<< HEAD
 <<<<<<< HEAD
 		stmt.setString(1, idprodotto);
 		stmt.setString(2, e);
@@ -32,11 +41,16 @@ public class ContieneDAO {
 		stmt.setString(1, IdProdotto);
 		stmt.setString(2, em);
 >>>>>>> b5f171113ed8691351bdd32889e44f1258214da2
+=======
+		stmt.setString(1, IdProdotto);
+		stmt.setString(2, em);
+>>>>>>> e1c0f993aa4f69713ab4375caa5dd025c631b829
 		stmt.setDouble(3, importoTotale);
 		System.out.println("stmt:" + stmt);
 		stmt.executeUpdate();
 	}
 	
+<<<<<<< HEAD
 <<<<<<< HEAD
 	public void removeFromCart(String e, String idprodotto) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.jdbc.Driver");
@@ -54,6 +68,15 @@ public class ContieneDAO {
 		stmt.setString(1, em);
 		stmt.setString(2, IdProdotto);
 >>>>>>> b5f171113ed8691351bdd32889e44f1258214da2
+=======
+	public void removeFromCart(String em, String IdProdotto) throws ClassNotFoundException, SQLException {
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection con = DriverManager.getConnection(URL, USER, PASS);
+		PreparedStatement stmt;
+		stmt = con.prepareStatement("DELETE FROM contiene WHERE emailutente = ? AND IdProdotto = ?");
+		stmt.setString(1, em);
+		stmt.setString(2, IdProdotto);
+>>>>>>> e1c0f993aa4f69713ab4375caa5dd025c631b829
 		stmt.executeUpdate();
 	}
 	
@@ -62,10 +85,14 @@ public class ContieneDAO {
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		stmt = con.prepareStatement("SELECT SUM(importoTotale) FROM contiene WHERE emailutente = ?");
 =======
 		stmt = con.prepareStatement("SELECT SUM(ImportoTotale) FROM contiene WHERE emailutente = ?");
 >>>>>>> b5f171113ed8691351bdd32889e44f1258214da2
+=======
+		stmt = con.prepareStatement("SELECT SUM(ImportoTotale) FROM contiene WHERE emailutente = ?");
+>>>>>>> e1c0f993aa4f69713ab4375caa5dd025c631b829
 		stmt.setString(1, em);
 		ResultSet rs = stmt.executeQuery();
 		try {
@@ -73,10 +100,14 @@ public class ContieneDAO {
 			double tot = 0.0;
 			double iva = 0.22;
 <<<<<<< HEAD
+<<<<<<< HEAD
 			tot = Double.parseDouble(rs.getString("sum(importoTotale)"));
 =======
 			tot = Double.parseDouble(rs.getString("sum(ImportoTotale)"));
 >>>>>>> b5f171113ed8691351bdd32889e44f1258214da2
+=======
+			tot = Double.parseDouble(rs.getString("sum(ImportoTotale)"));
+>>>>>>> e1c0f993aa4f69713ab4375caa5dd025c631b829
 			tot += tot * iva;
 			return tot;
 			}
