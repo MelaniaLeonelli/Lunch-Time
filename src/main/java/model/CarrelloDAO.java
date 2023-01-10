@@ -27,7 +27,11 @@ public class CarrelloDAO {
 		while(rs.next()) {
 			Contiene c = new Contiene();
 			c.setEmailutente(rs.getString("emailutente"));
+<<<<<<< HEAD
 			c.setIdprodotto(rs.getString("IdProdotto"));
+=======
+			c.setIdprodotto(rs.getString("idprodotto"));
+>>>>>>> b5f171113ed8691351bdd32889e44f1258214da2
 			c.setQuantita(Integer.parseInt(rs.getString("quantita")));
 			c.setimportoTotale(Double.parseDouble(rs.getString("importoTotale")));
 			carrello.add(c);

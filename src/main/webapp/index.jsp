@@ -20,10 +20,9 @@
     </head>
     <body>
         <!-- Navigation-->
-      <%String email = (String) session.getAttribute("email");
-	String cf = (String) session.getAttribute("cf");
-	  String name = (String) session.getAttribute("name");
-	  Boolean role = (Boolean) session.getAttribute("adminRoles");
+      <%String email = (String) session.getAttribute("emailutente");
+	  String name = (String) session.getAttribute("nomeutente");
+	  Boolean role = (Boolean) session.getAttribute("ruolo");
 	 if (email == null) { %>
 	<jsp:include page="headerGuest.jsp"></jsp:include>
 

@@ -6,7 +6,6 @@ public class Ordine{
 	double importototale;
 	String emailutente;
 	
-	
 	public int getCodordine(){
 		return codordine;
 	}

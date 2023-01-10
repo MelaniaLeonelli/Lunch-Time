@@ -60,19 +60,31 @@
 			<br>
 			<div class="form-check">
   				<input class="form-check-input" type="radio" id="categoria">
+<<<<<<< HEAD
   				<label class="form-check-label" for="flexCheckDefault1">
+=======
+  				<label class="form-check-label" for="categoria">
+>>>>>>> b5f171113ed8691351bdd32889e44f1258214da2
    				 Non beneficiario
   				</label>
 			</div>
 			<div class="form-check">
   				<input class="form-check-input" type="radio" id="categoria">
+<<<<<<< HEAD
   				<label class="form-check-label" for="flexCheckDefault2">
+=======
+  				<label class="form-check-label" for="categoria">
+>>>>>>> b5f171113ed8691351bdd32889e44f1258214da2
     			Idoneo
   				</label>
 			</div>
 			<div class="form-check">
   				<input class="form-check-input" type="radio" id="categoria">
+<<<<<<< HEAD
   				<label class="form-check-label" for="flexCheckDefault3">
+=======
+  				<label class="form-check-label" for="categoria">
+>>>>>>> b5f171113ed8691351bdd32889e44f1258214da2
     			Beneficiario
   				</label>
 			</div>

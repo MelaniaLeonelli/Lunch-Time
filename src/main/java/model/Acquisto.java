@@ -41,7 +41,11 @@ public class Acquisto{
     	
     }
     
+
     public String toString() {
+=======
+    @Override
+	public String toString(){
     	return "Acquisto [codordine="+codordine+",codprodotto="+codprodotto+",costo="+costo+"]";
     }
 }

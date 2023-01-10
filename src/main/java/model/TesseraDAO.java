@@ -36,7 +36,11 @@ public class TesseraDAO {
 	}
 	
 
+<<<<<<< HEAD
 	public void ricaricaTessera(String e,float r) throws SQLException, ClassNotFoundException {
+=======
+	public boolean ricaricaTessera(String e,float r) throws SQLException, ClassNotFoundException {
+>>>>>>> b5f171113ed8691351bdd32889e44f1258214da2
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection(URL, USER, PASS);
 			PreparedStatement stmt;

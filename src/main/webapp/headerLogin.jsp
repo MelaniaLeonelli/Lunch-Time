@@ -68,8 +68,6 @@
 							</ul>
 						</div>
 					</div>
-					<button type="button" class="btn btn-outline-light me-2"
-						id="loginBtn" onclick="window.location.href='login.jsp'">Login</button>
 					<button type="button" class="btn btn-warning" id="registerBtn"
 						onclick="window.location.href='register.jsp'">Registrati</button>
 				</div>
