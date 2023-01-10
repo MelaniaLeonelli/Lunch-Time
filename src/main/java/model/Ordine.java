@@ -6,11 +6,8 @@ public class Ordine{
 	double importototale;
 	String emailutente;
 	
-<<<<<<< HEAD
-=======
 	
 	
->>>>>>> e1c0f993aa4f69713ab4375caa5dd025c631b829
 	public int getCodordine(){
 		return codordine;
 	}

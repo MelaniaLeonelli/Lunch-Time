@@ -15,7 +15,7 @@ public class PreferisceDAO {
 	public static String USER = "sisisi";
 	public static String PASS = "password";
 
-	public void addPreferito(String IdProdotto, String em) throws ClassNotFoundException, SQLException{
+	public void addPreferito(int IdProdotto, String em) throws ClassNotFoundException, SQLException{
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;

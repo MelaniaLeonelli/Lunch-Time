@@ -70,26 +70,27 @@ public class UtenteDAO {
 		return u;
 	}
 	
-	
-	 
-	 public Utente getUserByEmailutente(String emailutente) throws SQLException, ClassNotFoundException {
+	/*  DA TESTARE 
+	 * 
+	 * public Utente getUserByCF(String cf) throws SQLException, ClassNotFoundException {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
-		stmt = con.prepareStatement("SELECT nomeutente FROM utente WHERE utente.emailutente = ?");
-		stmt.setString(1, emailutente);
+		stmt = con.prepareStatement("SELECT CodFiscale, Nome, Cognome FROM utente WHERE utente.CodFiscale = ?");
+		stmt.setString(1, cf);
 		ResultSet rs = stmt.executeQuery();
 		Utente u = new Utente();
 		try {
 			while(rs.next()) {
-				u.setEmailutente(rs.getString("emailutente"));
-				u.setNomeutente(rs.getString("nomeutente"));
+				u.setCF(rs.getString("CodFiscale"));
+				u.setNome(rs.getString("Nome"));
+				u.setCognome(rs.getString("Cognome"));
 			}
 		} catch (SQLException e1) {
 			return null;
 		}
 		return u;
-	}
+	}*/
 
 	public Boolean alreadyExist(String e) throws SQLException, ClassNotFoundException {
 			Class.forName("com.mysql.jdbc.Driver");

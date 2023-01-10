@@ -33,12 +33,6 @@ public class Acquisto{
     	
     }
     
-<<<<<<< HEAD
-
-    public String toString() {
-=======
-=======
->>>>>>> e1c0f993aa4f69713ab4375caa5dd025c631b829
     @Override
 	public String toString(){
     	return "Acquisto [codordine="+codordine+",codprodotto="+codprodotto+",costo="+costo+"]";
