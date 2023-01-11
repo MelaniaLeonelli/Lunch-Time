@@ -50,4 +50,6 @@ public class DriverManagerConnectionPool {
 	 public static synchronized void releaseConnection(Connection connection) {
 		 DriverManagerConnectionPool.freeDbConnections.add(connection);
 	 }
+	 
+	 
 }
