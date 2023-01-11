@@ -10,7 +10,7 @@ import java.sql.DriverManager;
 
 public class UtenteDAO {
 	
-	public static String URL = "jdbc:mysql://127.0.0.1:3306/?user=root";
+	public static String URL = "jdbc:mysql://localhost:3306/lunchtime";
 	public static String USER = "sisisi";
 	public static String PASS = "password";
 
