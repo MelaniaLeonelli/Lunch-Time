@@ -27,13 +27,13 @@
 			<h1 class="h3 mb-3 fw-normal" id="logintext">Login</h1>
 
 			<div class="form-floating" id="formdiv">
-				<input type="emailutente" class="form-control" id="formdiv"
+				<input type="emailutente" class="form-control" id="floatingInput"
 					onfocus="getFocusMail()" onblur="blurInput()" placeholder="Emailutente"
 					name="emailutente" required=""> <label for="floatingInput">Indirizzo
 					Email</label>
 			</div>
 			<div class="form-floating" id="formdiv">
-				<input type="password" class="form-control" id="formdiv"
+				<input type="password" class="form-control" id="floatingPassword"
 					onfocus="getFocusPW()" onblur="blurInput()" placeholder="Password"
 					name="password" required=""> <label for="floatingPassword">Password</label>
 			</div>
