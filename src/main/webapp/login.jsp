@@ -27,8 +27,8 @@
 			<h1 class="h3 mb-3 fw-normal" id="logintext">Login</h1>
 
 			<div class="form-floating" id="formdiv">
-				<input type="emailutente" class="form-control" id="floatingInput"
-					onfocus="getFocusMail()" onblur="blurInput()" placeholder="Emailutente"
+				<input type="email" class="form-control" id="floatingInput"
+					onfocus="getFocusMail()" onblur="blurInput()" placeholder="Email"
 					name="emailutente" required=""> <label for="floatingInput">Indirizzo
 					Email</label>
 			</div>

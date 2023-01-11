@@ -12,7 +12,7 @@ public class UtenteDAO {
 	
 	public static String URL = "jdbc:mysql://localhost:3306/lunchtime";
 	public static String USER = "sisisi";
-	public static String PASS = "password";
+	public static String PASS = "password.8";
 
 	public void register(String email, String nu, String pw) throws SQLException, ClassNotFoundException {
 		Class.forName("com.mysql.jdbc.Driver");
@@ -29,11 +29,11 @@ public class UtenteDAO {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
-			stmt = con.prepareStatement("SELECT emailutente, Password, ruolo FROM utente WHERE utente.emailutente = ? AND utente.Password = SHA2(CONCAT(?, 'criptalo'), 224)");
+			stmt = con.prepareStatement("SELECT emailutente, password, ruolo FROM utente WHERE utente.emailutente = ? AND utente.password = SHA2(CONCAT(?, 'criptalo'), 224)");
 			stmt.setString(1, e);     
 			stmt.setString(2, p);
 			ResultSet rs = stmt.executeQuery();
-			System.out.println("Utente: " + rs);
+			System.out.println("utente: " + rs);
 			try {
 				while(rs.next()) {
 					if(Integer.parseInt(rs.getString("utente.ruolo")) > 0) {
