@@ -180,4 +180,31 @@ public class ProdottoDAO {
 		stmt.setString(5, idProdotto);
 		stmt.executeUpdate();
 	}
+	
+	public Prodotto getPreferisce(String em) throws SQLException, ClassNotFoundException {
+		Class.forName("com.mysql.jdbc.Driver");
+		Connection con = DriverManager.getConnection(URL, USER, PASS);
+		PreparedStatement stmt;
+		stmt = con.prepareStatement("SELECT nome, idprodotto, categoria, prezzo, immagine, descrizione, disponibile FROM prodotto, preferisce WHERE Prodotto.idProdotto = Preferisce.idprodotto AND emailutente=?");
+		stmt.setString(1, em);
+		ResultSet rs = stmt.executeQuery();
+		try {
+			while(rs.next()) {
+				Prodotto p = new Prodotto();
+				p.setNome(rs.getString("nome"));
+				p.setIdprodotto(rs.getString("idprodotto"));
+				p.setCategoria(rs.getString("categoria"));
+				p.setPrezzo(Float.parseFloat(rs.getString("prezzo")));
+				p.setImmagine(rs.getString("immagine"));
+				p.setDescrizione(rs.getString("descrizione"));
+				p.setDisponibile(Integer.parseInt(rs.getString("disponibile")));
+				return p;
+			}
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

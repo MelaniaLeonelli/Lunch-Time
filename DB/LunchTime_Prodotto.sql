@@ -29,7 +29,7 @@ INSERT INTO `prodotto` VALUES
 ('00000014','lasagna','primopiatto','1.0','lasagna.jpg','ingredienti: farina, uova, latte, burro, sale, carne bovina, parmigiano reggiano, sedano, passata di pomodoro, pepe nero','0'),
 ('00000015','bastoncini','secondopiatto','1.0','bastoncini.jpg','ingredienti: merluzzo, farina, sale, prezzemolo, uova, pangrattato, olio di semi','0'),
 ('00000016','insalata di mare','secondopiatto','1.0','insalatamare.jpg','ingredienti: polpi, totano, seppie, patate, limone', '0'),
-('00000017','pesce spada', 'secondopiatto', '1.0', 'pescespada.jpg', 'ingredienti: pesce spada, pomodori datterini, olive nere, aglio, olio extravergine d\'oliva, sale','0'),
+('00000017','pesce spada', 'secondopiatto', '1.0', 'pescespada.jpg', 'ingredienti: pesce spada, pomodori datterini, olive nere, aglio, olio extravergine d\oliva, sale','0'),
 ('00000018','hamburger','secondopiatto','1.0','hamburger,jpg','ingredienti: hamburger di maiale','0'),
 ('00000019','patate al forno', 'contorno', '1.0','patate.jpg','ingredienti: patate, olio extravergine, rosmarino, sale','0'),
 ('00000020','insalata','contorno','1.0','insalata.jpg','ingredienti: insalata, sale, olio extravergine, limone','0'),

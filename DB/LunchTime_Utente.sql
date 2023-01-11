@@ -11,6 +11,6 @@ INSERT INTO `utente` VALUES
 ('m.leonelli3@studenti.unisa.it','melaperauva','57f42cb1e4898f55f8f8e4729c5a575f0484224ffa774e290a156e7a','0'),
 ('s.scafa1@tudenti.unisa.it','settismysenpai','57f42cb1e4898f55f8f8e4729c5a575f0484224ffa774e290a156e7a','0'),
 ('e.allocco1@studenti.unisa.it','zoso','57f42cb1e4898f55f8f8e4729c5a575f0484224ffa774e290a156e7a0','0'),
-('signoradellamensa@gmail.it','signoramensa','57f42cb1e4898f55f8f8e4729c5a575f0484224ffa774e290a156e7a','0');
+('signoradellamensa@gmail.it','signoramensa','57f42cb1e4898f55f8f8e4729c5a575f0484224ffa774e290a156e7a','1');
 LOCK TABLES `utente` WRITE;
 UNLOCK TABLES;

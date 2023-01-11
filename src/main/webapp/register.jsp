@@ -58,7 +58,7 @@
 			
 			
 			<br>
-			<form action="/action_page.php">
+			
 			
  				 <p>Seleziona la tua borsa di studio:</p>
   					<input type="radio" id="categoria" name="categoria" value="1">
@@ -69,7 +69,16 @@
 					  <label for="categoria">beneficiario</label>
 								
 
-		</form>
+	
+		<button id="registerBtn" class="w-100 btn btn-lg btn-primary"
+				type="submit">Registrati</button>
+
+			<div id="formdiv">
+				<label> <a href="login.jsp" id="loginLink">Hai già un
+						account? Accedi.</a>
+							</label>
+						</div>
+						</form>
 
 	</main>
 
