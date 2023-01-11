@@ -40,8 +40,8 @@
 
 			<label for="floatingInput">Email*</label>
 			<div class="form-floating">
-				<input type="email" class="form-control" id="email" type="text"
-					name="email" required placeholder="Email">
+				<input type="emailutente" class="form-control" id="emailutente" type="text"
+					name="emailutente" required placeholder="Email">
 			</div>
 
 			<label for="floatingPassword">Password*</label>

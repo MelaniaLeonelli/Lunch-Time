@@ -33,7 +33,7 @@ public class RegisterServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String email = request.getParameter("email");
+		String email = request.getParameter("emailutente");
 		UtenteDAO uDAO = new UtenteDAO();
 		TesseraDAO tDAO = new TesseraDAO();
 		RequestDispatcher dispatcher;
@@ -46,7 +46,7 @@ public class RegisterServlet extends HttpServlet {
 			}
 			else {
 				request.getSession().setAttribute("utenteEsistente", Boolean.FALSE);
-				String em = request.getParameter("email");
+				String em = request.getParameter("emailutente");
 				String nomeutente = request.getParameter("nomeutente");
 				String password = request.getParameter("password");
 				int codicetessera = Integer.parseInt(request.getParameter("codicetessera"));

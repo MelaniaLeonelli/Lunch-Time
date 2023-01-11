@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String emailutente = request.getParameter("email");
+		String emailutente = request.getParameter("emailutente");
 		String password = request.getParameter("password");
 		
 		System.out.println(emailutente + ", " + password);
@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
 					if (uDAO.login(emailutente, password) == 1)
 					{
 						request.getSession().setAttribute("ruolo", Boolean.TRUE);
-						request.getSession().setAttribute("email", emailutente);
+						request.getSession().setAttribute("emailutente", emailutente);
 						Utente u = uDAO.getUserData(emailutente, password);
 						request.getSession().setAttribute("nomeutente", u.getNomeutente());
 						dispatcher = request.getRequestDispatcher("index.jsp");
@@ -57,7 +57,7 @@ public class LoginServlet extends HttpServlet {
 					else if(uDAO.login(emailutente, password) == 2)
 					{
 						request.getSession().setAttribute("ruolo", Boolean.FALSE);
-						request.getSession().setAttribute("email", emailutente);
+						request.getSession().setAttribute("emailutente", emailutente);
 						Utente u = uDAO.getUserData(emailutente, password);
 						request.getSession().setAttribute("nomeutente", u.getNomeutente());
 						dispatcher = request.getRequestDispatcher("index.jsp");
