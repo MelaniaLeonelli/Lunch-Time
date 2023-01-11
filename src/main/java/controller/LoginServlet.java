@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String emailutente = request.getParameter("emailutente");
+		String emailutente = request.getParameter("email");
 		String password = request.getParameter("password");
 		
 		System.out.println(emailutente + ", " + password);
