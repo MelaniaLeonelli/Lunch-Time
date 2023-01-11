@@ -49,7 +49,7 @@ public class RegisterServlet extends HttpServlet {
 				String em = request.getParameter("emailutente");
 				String nomeutente = request.getParameter("nomeutente");
 				String password = request.getParameter("password");
-				String codicetessera = request.getParameter("codicetessera");
+				int codicetessera = Integer.parseInt(request.getParameter("codicetessera"));
 				int categoria = Integer.parseInt(request.getParameter("categoria"));
 				
 
@@ -58,7 +58,7 @@ public class RegisterServlet extends HttpServlet {
 				System.out.println(em + nomeutente + password + codicetessera);
 				try {
 					uDAO.register(em, nomeutente, password);
-					tDAO.addTessera(codicetessera,categoria,em);
+					tDAO.addTessera(em,codicetessera,categoria);
 				} catch (ClassNotFoundException | SQLException e) {
 					e.printStackTrace();
 				}

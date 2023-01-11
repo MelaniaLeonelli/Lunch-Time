@@ -10,14 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
 import model.Tessera;
->>>>>>> b5f171113ed8691351bdd32889e44f1258214da2
-=======
-import model.Tessera;
->>>>>>> e1c0f993aa4f69713ab4375caa5dd025c631b829
 import model.Utente;
 import model.UtenteDAO;
 
