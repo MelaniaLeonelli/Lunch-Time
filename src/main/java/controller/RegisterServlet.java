@@ -46,7 +46,7 @@ public class RegisterServlet extends HttpServlet {
 			}
 			else {
 				request.getSession().setAttribute("utenteEsistente", Boolean.FALSE);
-				String em = request.getParameter("emailutente");
+				String em = request.getParameter("email");
 				String nomeutente = request.getParameter("nomeutente");
 				String password = request.getParameter("password");
 				int codicetessera = Integer.parseInt(request.getParameter("codicetessera"));

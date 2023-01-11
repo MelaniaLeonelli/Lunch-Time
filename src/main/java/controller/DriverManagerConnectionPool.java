@@ -29,6 +29,8 @@ public class DriverManagerConnectionPool {
 		 newConnection.setAutoCommit(false);
 		 return newConnection;
 		 }
+	 
+	 
 
 	 public static synchronized Connection getConnection() throws SQLException {
 		 Connection connection;
