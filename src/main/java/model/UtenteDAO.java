@@ -1,5 +1,5 @@
 package model;
-import java.sql.PreparedStatement; 
+import java.sql.PreparedStatement;  
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -11,11 +11,15 @@ import java.sql.DriverManager;
 public class UtenteDAO {
 	
 	public static String URL = "jdbc:mysql://localhost:3306/lunchtime";
-	public static String USER = "sisisi";
-	public static String PASS = "password.8";
+	public static String USER = "root";
+	public static String PASS = "password";
 
 	public void register(String email, String nu, String pw) throws SQLException, ClassNotFoundException {
-		Class.forName("com.mysql.jdbc.Driver");
+		try {
+	 		Class.forName("com.mysql.cj.jdbc.Driver");
+	 		} catch (ClassNotFoundException e) {
+	 			System.out.println("DB driver not found!" + e);
+	 		}
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
 		stmt = con.prepareStatement("INSERT INTO utente VALUES (?, ?, SHA2(CONCAT(?, 'criptalo'), 224), 0)");
@@ -26,14 +30,14 @@ public class UtenteDAO {
 	}
 	
 	public Integer login(String e, String p) throws ClassNotFoundException, SQLException {
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
-			stmt = con.prepareStatement("SELECT emailutente, password, ruolo FROM utente WHERE utente.emailutente = ? AND utente.password = ?");
+			stmt = con.prepareStatement("SELECT emailutente, Password, ruolo FROM utente WHERE utente.emailutente = ? AND utente.Password = SHA2(CONCAT(?, 'criptalo'), 224)");
 			stmt.setString(1, e);     
 			stmt.setString(2, p);
 			ResultSet rs = stmt.executeQuery();
-			System.out.println("utente: " + rs);
+			System.out.println("Utente: " + rs);
 			try {
 				while(rs.next()) {
 					if(Integer.parseInt(rs.getString("utente.ruolo")) > 0) {
@@ -51,7 +55,7 @@ public class UtenteDAO {
 	}
 	
 	public Utente getUserData(String e, String p) throws SQLException, ClassNotFoundException {
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
 		stmt = con.prepareStatement("SELECT emailutente, Nomeutente, ruolo FROM utente WHERE utente.emailutente = ?");
@@ -72,7 +76,7 @@ public class UtenteDAO {
 	
 
 	 public Utente getUserByEmailutente(String emailutente) throws SQLException, ClassNotFoundException {
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
 		stmt = con.prepareStatement("SELECT nomeutente FROM utente WHERE utente.emailutente = ?");
@@ -91,7 +95,7 @@ public class UtenteDAO {
 	}
 
 	public Boolean alreadyExist(String e) throws SQLException, ClassNotFoundException {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection(URL, USER, PASS);
 			PreparedStatement stmt;
 		

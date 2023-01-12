@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
+import model.Tessera;
 import model.Utente;
 import model.UtenteDAO;
 
@@ -48,17 +49,17 @@ public class LoginServlet extends HttpServlet {
 						request.getSession().setAttribute("ruolo", Boolean.TRUE);
 						request.getSession().setAttribute("emailutente", emailutente);
 						Utente u = uDAO.getUserData(emailutente, password);
-						request.getSession().setAttribute("nome", u.getNomeutente());
+						request.getSession().setAttribute("nomeutente", u.getNomeutente());
 						dispatcher = request.getRequestDispatcher("index.jsp");
 						dispatcher.forward(request, response);
 					}
 					
 					else if(uDAO.login(emailutente, password) == 2)
 					{
-						request.getSession().setAttribute("adminRoles", Boolean.FALSE);
-						request.getSession().setAttribute("email", emailutente);
+						request.getSession().setAttribute("ruolo", Boolean.FALSE);
+						request.getSession().setAttribute("emailutente", emailutente);
 						Utente u = uDAO.getUserData(emailutente, password);
-						request.getSession().setAttribute("name", u.getNomeutente());
+						request.getSession().setAttribute("nomeutente", u.getNomeutente());
 						dispatcher = request.getRequestDispatcher("index.jsp");
 						dispatcher.forward(request, response);
 					}
