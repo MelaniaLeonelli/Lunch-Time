@@ -7,13 +7,13 @@ import controller.DriverManagerConnectionPool;
 public class ProdottoDAO {
 	
 	public static String URL = "\"jdbc:mysql://127.0.0.1:3306/?user=root\"";
-	public static String USER = "sisisi";
+	public static String USER = "root";
 	public static String PASS = "password";
 	
 	public ArrayList<Prodotto> doRetrieveByName(String nome) throws ClassNotFoundException{
 		ArrayList<Prodotto> prodotti = new ArrayList<Prodotto>();
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection(URL, USER, PASS);
 			PreparedStatement stmt;
 			stmt = con.prepareStatement("SELECT nome, idprodotto, categoria, prezzo, immagine, descrizione, disponibile FROM prodotto WHERE prodotto.nome LIKE ?");
@@ -38,7 +38,7 @@ public class ProdottoDAO {
 	
 	public ArrayList<Prodotto> doRetrieveByCategoria(String cat) throws ClassNotFoundException, SQLException{
 		ArrayList<Prodotto> prodotti = new ArrayList<Prodotto>();
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection(URL, USER, PASS);
 			PreparedStatement stmt;
 			stmt = con.prepareStatement("SELECT nome, codprodotto, categoria, prezzo, immagine, descrizione, disponibile FROM prodotto WHERE prodotto.categoria LIKE ?");
@@ -87,7 +87,7 @@ public class ProdottoDAO {
 	}
 	*/
 	public void addProduct(String idProdotto, String nome, String categoria, float prezzo, String immagine, String descrizione, int disponibile) throws SQLException, ClassNotFoundException {
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
 		stmt = con.prepareStatement("INSERT INTO prodotto VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
@@ -103,7 +103,7 @@ public class ProdottoDAO {
 	}
 	
 	public void deleteProduct(String idProdotto) throws ClassNotFoundException, SQLException {
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
 		stmt = con.prepareStatement("DELETE FROM prodotto WHERE idProdotto = ?");
@@ -113,7 +113,7 @@ public class ProdottoDAO {
 	}
 	
 	public Prodotto getProduct(String idProdotto) throws SQLException, ClassNotFoundException {
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
 		stmt = con.prepareStatement("SELECT nome, idprodotto, categoria, prezzo, immagine, descrizione, disponibile FROM prodotto WHERE idProdotto = ?");
@@ -140,7 +140,7 @@ public class ProdottoDAO {
 	}
 	
 	public void rimuoviDisponibile(String idProdotto) throws ClassNotFoundException, SQLException {
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
 		stmt = con.prepareStatement("UPDATE prodotto SET disponibile = 0 WHERE idProdotto = ? AND disponibile > 0");
@@ -150,7 +150,7 @@ public class ProdottoDAO {
 	
 	public ArrayList<String> getProductCodes() throws SQLException, ClassNotFoundException {
 		ArrayList<String> codes = new ArrayList<String>();
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
 		stmt = con.prepareStatement("SELECT idprodotto FROM prodotto");
@@ -169,7 +169,7 @@ public class ProdottoDAO {
 	}
 	
 	public void updateProduct(String idProdotto, String name, String category, float price, String description) throws SQLException, ClassNotFoundException{
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
 		stmt = con.prepareStatement("UPDATE prodotto SET nome = ?, categoria = ?, prezzo = ?, descrizione = ?  WHERE idprodotto = ?");
@@ -182,7 +182,7 @@ public class ProdottoDAO {
 	}
 	
 	public Prodotto getPreferisce(String em) throws SQLException, ClassNotFoundException {
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
 		stmt = con.prepareStatement("SELECT nome, idprodotto, categoria, prezzo, immagine, descrizione, disponibile FROM prodotto, preferisce WHERE Prodotto.idProdotto = Preferisce.idprodotto AND emailutente=?");

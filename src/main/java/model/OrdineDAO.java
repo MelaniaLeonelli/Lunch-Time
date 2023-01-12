@@ -12,13 +12,13 @@ import controller.DriverManagerConnectionPool;
 public class OrdineDAO {
 	
 	public static String URL = "jdbc:mysql://127.0.0.1:3306/?user=root";
-	public static String USER = "sisisi";
+	public static String USER = "root";
 	public static String PASS = "password";
 
 	public ArrayList<Ordine> getOrders(String em) throws ClassNotFoundException{
 		ArrayList<Ordine> ordini = new ArrayList<Ordine>();
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection(URL, USER, PASS);
 			PreparedStatement stmt;
 			stmt = con.prepareStatement("SELECT CodOrdine, Data, ImportoTotale, emailutente FROM Ordine WHERE Ordine.emailutente = ?");
@@ -41,7 +41,7 @@ public class OrdineDAO {
 	public ArrayList<Ordine> getAllOrders() throws ClassNotFoundException{
 		ArrayList<Ordine> ordini = new ArrayList<Ordine>();
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection(URL, USER, PASS);
 			PreparedStatement stmt;
 			stmt = con.prepareStatement("SELECT CodOrdine, Data, emailutente FROM Ordine");
@@ -62,7 +62,7 @@ public class OrdineDAO {
 	
 	public Ordine getOrderByCode(int CodOrdine) throws ClassNotFoundException{
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection(URL, USER, PASS);
 			PreparedStatement stmt;
 			stmt = con.prepareStatement("SELECT CodOrdine, Data, ImportoTotale, emailutente FROM Ordine WHERE Ordine.CodOrdine = ?");
@@ -83,7 +83,7 @@ public class OrdineDAO {
 	}
 	
 	public void order(int CodOrdine, String em, String data, double importoTotale) throws SQLException, ClassNotFoundException {
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
 		stmt = con.prepareStatement("INSERT INTO ordine VALUES (?, ?, ?, ?, ?)");
@@ -95,7 +95,7 @@ public class OrdineDAO {
 	}
 	
 	public int getLatestOrder() throws ClassNotFoundException, SQLException {
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
 		stmt = con.prepareStatement("SELECT CodOrdine FROM ordine WHERE CodOrdine=(SELECT max(CodOrdine) FROM ordine)");

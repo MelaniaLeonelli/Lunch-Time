@@ -12,11 +12,11 @@ import controller.DriverManagerConnectionPool;
 public class AcquistoDAO {
 	
 	public static String URL = "jdbc:mysql://127.0.0.1:3306/?user=root";
-	public static String USER = "sisisi";
+	public static String USER = "root";
 	public static String PASS = "password";
 
 	public void addAcquisto(int ocode, String pcode, double costo) throws ClassNotFoundException, SQLException{
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
 		stmt = con.prepareStatement("INSERT INTO acquisto VALUES(?, ?, ?)");
@@ -28,7 +28,7 @@ public class AcquistoDAO {
 	
 	public ArrayList<String> getAcquisti(int codOrdine) throws SQLException, ClassNotFoundException {
 		ArrayList<String> codes = new ArrayList<String>();
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
 		stmt = con.prepareStatement("SELECT CodProdotto FROM acquisto WHERE CodOrdine = ?");
@@ -47,7 +47,7 @@ public class AcquistoDAO {
 	}
 	
 	public double getPrezzo(int codOrdine, String codProdotto) throws SQLException, ClassNotFoundException {
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
 		stmt = con.prepareStatement("SELECT * FROM acquisto WHERE CodOrdine = ?  AND CodProdotto = ?");

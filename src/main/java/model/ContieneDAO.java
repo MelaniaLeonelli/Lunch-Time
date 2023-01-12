@@ -9,11 +9,11 @@ import java.sql.SQLException;
 public class ContieneDAO {
 	
 	public static String URL = "jdbc:mysql://127.0.0.1:3306/?user=root";
-	public static String USER = "sisisi";
+	public static String USER = "root";
 	public static String PASS = "password";
 	
 	public void addToCart(String em, String IdProdotto, int quantita, double importoTotale) throws ClassNotFoundException, SQLException {
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
 		stmt = con.prepareStatement("INSERT INTO contiene VALUES(?, ?, '1', ?);");
@@ -25,7 +25,7 @@ public class ContieneDAO {
 	}
 	
 	public void removeFromCart(String em, String IdProdotto) throws ClassNotFoundException, SQLException {
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
 		stmt = con.prepareStatement("DELETE FROM contiene WHERE emailutente = ? AND IdProdotto = ?");
@@ -35,7 +35,7 @@ public class ContieneDAO {
 	}
 	
 	public Double getTotal(String em) throws ClassNotFoundException, SQLException {
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
 		stmt = con.prepareStatement("SELECT SUM(ImportoTotale) FROM contiene WHERE emailutente = ?");

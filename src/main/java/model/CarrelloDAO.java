@@ -13,12 +13,12 @@ import controller.DriverManagerConnectionPool;
 public class CarrelloDAO {
 	
 	public static String URL = "jdbc:mysql://127.0.0.1:3306/?user=root";
-	public static String USER = "sisisi";
+	public static String USER = "root";
 	public static String PASS = "password";
 	
 	public ArrayList<Contiene> getCart(String em) throws ClassNotFoundException, SQLException{
 		ArrayList<Contiene> carrello = new ArrayList<Contiene>();
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
 		stmt = con.prepareStatement("SELECT emailutente, IdProdotto, quantita, ImportoTotale FROM Contiene WHERE Contiene.CodFiscale = ?");
@@ -36,7 +36,7 @@ public class CarrelloDAO {
 	}
 	
 	public void emptyBasket(String em) throws ClassNotFoundException, SQLException {
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
 		stmt = con.prepareStatement("DELETE FROM Contiene WHERE CodFiscale = ?");

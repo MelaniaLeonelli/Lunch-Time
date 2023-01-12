@@ -11,7 +11,7 @@ import java.sql.DriverManager;
 public class TesseraDAO {
 	
 	public static String URL = "jdbc:mysql://127.0.0.1:3306/?user=root";
-	public static String USER = "sisisi";
+	public static String USER = "root";
 	public static String PASS = "password";
 	
 	public void addTessera(String email, int codice,int categoria) throws SQLException, ClassNotFoundException {
@@ -27,7 +27,7 @@ public class TesseraDAO {
 
 	
 	public Tessera getTesseraData(String e) throws SQLException, ClassNotFoundException {
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
 		stmt = con.prepareStatement("SELECT codicetessera, categoria, saldo FROM tessera WHERE tessera.emailutente = ?");
@@ -48,7 +48,7 @@ public class TesseraDAO {
 	
 
 	public void ricaricaTessera(String e,float r) throws SQLException, ClassNotFoundException {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection(URL, USER, PASS);
 			PreparedStatement stmt;
 		
