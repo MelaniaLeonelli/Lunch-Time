@@ -15,26 +15,25 @@ public class PreferisceDAO {
 	public static String USER = "sisisi";
 	public static String PASS = "password";
 
-	public void addPreferito(String idProdotto, String em) throws ClassNotFoundException, SQLException{
+	public void addPreferito(String IdProdotto, String em) throws ClassNotFoundException, SQLException{
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
 		stmt = con.prepareStatement("INSERT INTO preferisce VALUES(?, ?)");
-		stmt.setString(1, idProdotto);
+		stmt.setString(1, IdProdotto);
 		stmt.setString(2, em);
 		stmt.executeUpdate();
 	}
 	
-	public void deletePreferito(String idProdotto, String em) throws ClassNotFoundException, SQLException{
+	public void deletePreferito(String IdProdotto, String em) throws ClassNotFoundException, SQLException{
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
 		stmt = con.prepareStatement("DELETE INTO preferisce VALUES(?, ?)");
-		stmt.setString(1, idProdotto);
+		stmt.setString(1, IdProdotto);
 		stmt.setString(2, em);
 		stmt.executeUpdate();
 	}
-	
 	
 	
 }

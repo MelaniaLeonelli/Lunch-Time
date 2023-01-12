@@ -24,7 +24,7 @@ public class DriverManagerConnectionPool {
 		 Connection newConnection = null;
 		 String url = "jdbc:mysql://localhost:3306/lunchtime";
 		 String user = "sisisi";
-		 String pass = "password";
+		 String pass = "password.8";
 		 newConnection = DriverManager.getConnection(url, user, pass);
 		 newConnection.setAutoCommit(false);
 		 return newConnection;
