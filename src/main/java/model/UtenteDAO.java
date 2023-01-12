@@ -95,7 +95,7 @@ public class UtenteDAO {
 			Connection con = DriverManager.getConnection(URL, USER, PASS);
 			PreparedStatement stmt;
 		
-			stmt = con.prepareStatement("SELECT nomeutente FROM utente WHERE utente.emailutente = ?");
+			stmt = con.prepareStatement("SELECT emailutente FROM utente WHERE utente.emailutente = ?");
 			stmt.setString(1, e);
 			ResultSet rs = stmt.executeQuery();
 			try {

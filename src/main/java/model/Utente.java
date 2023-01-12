@@ -10,11 +10,9 @@ public class Utente {
 		
 	}
 	
-    public Utente(String emailutente, String nomeutente, String password, int ruolo) {
+    public Utente(String emailutente, String password) {
         this.emailutente = emailutente;
-        this.nomeutente = nomeutente;
         this.password = password;
-        this.ruolo = ruolo;
     }
  
 
