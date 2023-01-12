@@ -29,7 +29,7 @@ public class UtenteDAO {
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
-			stmt = con.prepareStatement("SELECT emailutente, password, ruolo FROM utente WHERE utente.emailutente = ? AND utente.password = SHA2(CONCAT(?, 'criptalo'), 224)");
+			stmt = con.prepareStatement("SELECT emailutente, password, ruolo FROM utente WHERE utente.emailutente = ? AND utente.password = ?");
 			stmt.setString(1, e);     
 			stmt.setString(2, p);
 			ResultSet rs = stmt.executeQuery();
