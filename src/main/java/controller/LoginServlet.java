@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
 				{
 					if (uDAO.login(emailutente, password) == 1)
 					{
-						request.getSession().setAttribute("ruolo", Boolean.TRUE);
+						request.getSession().setAttribute("adminRoles", Boolean.TRUE);
 						request.getSession().setAttribute("emailutente", emailutente);
 						Utente u = uDAO.getUserData(emailutente, password);
 						request.getSession().setAttribute("nomeutente", u.getNomeutente());
@@ -56,7 +56,7 @@ public class LoginServlet extends HttpServlet {
 					
 					else if(uDAO.login(emailutente, password) == 2)
 					{
-						request.getSession().setAttribute("ruolo", Boolean.FALSE);
+						request.getSession().setAttribute("adminRoles", Boolean.FALSE);
 						request.getSession().setAttribute("emailutente", emailutente);
 						Utente u = uDAO.getUserData(emailutente, password);
 						request.getSession().setAttribute("nomeutente", u.getNomeutente());
