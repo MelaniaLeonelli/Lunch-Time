@@ -40,7 +40,7 @@ public class AddToDBServlet extends HttpServlet {
 		String descrizione = request.getParameter("descrizione");
 		int disponibile = Integer.parseInt(request.getParameter("disponibile"));
 		
-		System.out.println("Hai inserito il prodotto " + name + "(" + idp + ")" + " nel database.");
+		System.out.println("Hai inserito il prodotto " + name + "(" + idp + ")" + " nel database");
 		ProdottoDAO pDAO = new ProdottoDAO();
 		
 		try {
