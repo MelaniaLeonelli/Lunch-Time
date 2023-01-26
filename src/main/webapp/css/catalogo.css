@@ -1,0 +1,37 @@
+@charset "ISO-8859-1";
+
+#container2.container {
+  justify-content:space-between;
+  /*margin-top:70px;*/
+  padding-bottom:60px;
+  
+}
+.col{
+  padding-left:10px;
+  padding-right:10px;
+  /*margin-left:10px;
+  margin-right:10px;*/
+}
+div.container2{
+  width:1800px;
+  height:140px;
+}
+div.col{
+  width:1200px;
+  height:200px;
+}
+
+div.row.top-buffer{
+  border-style:groove;
+  width:1400px;
+  height:200px;
+  padding-right:0px;
+  margin-right:0px;
+  
+}/*
+#container2.container{
+  background-color: #ffc107;
+}*/
+body{
+  background-color: #ffc107;
+}

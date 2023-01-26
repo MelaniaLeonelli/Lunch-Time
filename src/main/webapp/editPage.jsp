@@ -27,7 +27,9 @@
 
 	<%String emailutente = (String) session.getAttribute("emailutente");
 	  String name = (String) session.getAttribute("nomeutente");
-	  Boolean role = (Boolean) session.getAttribute("ruolo");
+	  Boolean role = (Boolean) session.getAttribute("adminRoles");
+	  session.setAttribute("emailutente", emailutente);
+	  session.setAttribute("adminRoles", role);
 	 %>
 
 	<jsp:include page="headerEditPage.jsp"></jsp:include>
@@ -35,10 +37,9 @@
 	<main class="form-signin w-100 m-auto">
 
 		<form action="ProductUpdateServlet" id="editForm">
-
-			<input type="text" class="form-control" id="pcode" name="idprodotto"
-				onblur="blurInput()" readonly placeholder="<%=p.getIdprodotto()%>"
-				value="<%=p.getIdprodotto()%>"> <labelfor "nome"><b>Nome</b>:</label>
+        <label for "nome"><b>IdProdotto</b>:</label>    
+		<input type="text" class="form-control" id="pcode" type = "text" name="pcode" onblur="blurInput()" readonly placeholder="<%=p.getIdprodotto()%>" value="<%=p.getIdprodotto()%>"> 
+	<label for "nome"><b>Nome</b>:</label>
 	<div class="form-floating" id="formdiv" contentEditable="true">
 		<input type="text" class="form-control" id = "name" type = "text" name = "name" onblur = "blurInput()" readonly placeholder="<%=p.getNome()%>" value="<%=p.getNome()%>">
 	</div>
@@ -61,7 +62,7 @@
 
 	</main>
 
-	<jsp:include page="editFooter.html"></jsp:include>
+	<jsp:include page="/adminpage/editFooter.html"></jsp:include>
 
 	<script>
 	const button = document.getElementById('button');

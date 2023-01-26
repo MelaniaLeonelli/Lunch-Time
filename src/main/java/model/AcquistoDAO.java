@@ -11,7 +11,7 @@ import controller.DriverManagerConnectionPool;
 
 public class AcquistoDAO {
 	
-	public static String URL = "jdbc:mysql://127.0.0.1:3306/?user=root";
+	public static String URL = "jdbc:mysql://localhost:3306/lunchtime";
 	public static String USER = "root";
 	public static String PASS = "password";
 
@@ -24,6 +24,42 @@ public class AcquistoDAO {
 		stmt.setString(2, pcode);
 		stmt.setDouble(3, costo);
 		stmt.executeUpdate();
+	}
+	 
+	public void effettuaPagamento(double costo, String em) throws ClassNotFoundException, SQLException{
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection con = DriverManager.getConnection(URL, USER, PASS);
+		PreparedStatement stmt;
+		stmt = con.prepareStatement("UPDATE tessera SET saldo = saldo - ? WHERE emailutente = ?");
+		stmt.setDouble(1, costo);
+		stmt.setString(2, em);
+		stmt.executeUpdate();
+	}
+	
+	
+	
+	
+	
+	public int verificaSaldo(double totvalue,String em) throws ClassNotFoundException, SQLException{
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection con = DriverManager.getConnection(URL, USER, PASS);
+		PreparedStatement stmt;
+		stmt=con.prepareStatement("SELECT saldo FROM tessera WHERE emailutente = ?");
+		stmt.setString(1,em);
+		ResultSet rs =stmt.executeQuery();
+		try {
+			while(rs.next()) {
+			 int saldo = rs.getInt("saldo");
+			 
+			if(saldo<totvalue)
+				return 0;
+			
+			}
+		}catch(SQLException e) {
+			return -1;
+		}
+	return 1;
+	
 	}
 	
 	public ArrayList<String> getAcquisti(int codOrdine) throws SQLException, ClassNotFoundException {

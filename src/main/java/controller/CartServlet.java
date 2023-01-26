@@ -32,15 +32,18 @@ public class CartServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String em = request.getParameter("emailutente");
+		String emailutente = (String) request.getSession().getAttribute("emailutente");
+		Boolean role = (Boolean) request.getSession().getAttribute("adminRoles");
 		
 		CarrelloDAO carrDAO = new CarrelloDAO();
 		try {
-			ArrayList<Contiene> c = carrDAO.getCart(em);
+			ArrayList<Contiene> c = carrDAO.getCart(emailutente);
 			if(c != null) {
 				System.out.println("carrello: " + c);
-				request.setAttribute("emailutente", c);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("cart.jsp");
+				request.setAttribute("array", c);
+				request.getSession().setAttribute("emailutente", emailutente);
+				request.getSession().setAttribute("adminRoles", role);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("Carrello.jsp");
 				dispatcher.forward(request, response);
 			}
 			else System.out.println("errore carrello");

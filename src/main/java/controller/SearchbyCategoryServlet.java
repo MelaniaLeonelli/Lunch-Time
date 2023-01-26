@@ -36,6 +36,7 @@ public class SearchbyCategoryServlet extends HttpServlet {
 		
 		String categoria = request.getParameter("categoria");
 		ProdottoDAO pDAO = new ProdottoDAO();
+		Boolean role = (Boolean) request.getSession().getAttribute("adminRoles");
 		ArrayList<Prodotto> a = null;
 		try {
 			a = pDAO.doRetrieveByCategoria(categoria);
@@ -45,6 +46,7 @@ public class SearchbyCategoryServlet extends HttpServlet {
 		}
 		System.out.println("a:" + a);
 		request.setAttribute("categoria", a);
+		request.getSession().setAttribute("adminRoles", role);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("resultsCategoria.jsp");
 		dispatcher.forward(request, response);
 	}

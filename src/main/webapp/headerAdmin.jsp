@@ -14,6 +14,8 @@
 	integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
 	crossorigin="anonymous"></script>
 <body>
+<%String emailutente = request.getParameter("emailutente");
+%>
 
 	<header class="p-3 bg-dark text-white">
 		<div class="dropdown" id="admin">
@@ -93,15 +95,15 @@
 					id="navbarsExample08">
 					<ul class="navbar-nav">
 						<li class="nav-item"><a class="nav-link"
-							href="Catalogo.jsp">Catalogo</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="Preferiti.jsp">Preferiti</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="Profilo.jsp">Profilo</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="RicaricaTessera.jsp">Saldo</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="Carrello.jsp">Carrello</a></li>
+              href="CatalogoServlet">Catalogo</a></li>
+            <li class="nav-item"><a class="nav-link"
+              href="SearchbyPreferitiServlet?emailutente=<%=emailutente%>">Preferiti</a></li>
+            <li class="nav-item"><a class="nav-link"
+              href="ProfilePageServlet">Profilo</a></li>
+            <li class="nav-item"><a class="nav-link"
+              href="RicaricaSaldo.jsp">Saldo</a></li>
+            <li class="nav-item"><a class="nav-link"
+							href="CartServlet?emailutente="<%=emailutente %>>Carrello</a></li>
 					</ul>
 				</div>
 			</div>

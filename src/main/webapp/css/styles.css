@@ -7737,8 +7737,8 @@ keyframes placeholder-wave {
 }
 
 .py-5 {
-	padding-top: 3rem !important;
-	padding-bottom: 3rem !important;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 .pt-0 {
@@ -8257,7 +8257,7 @@ keyframes placeholder-wave {
 	.d-sm-table {
 		display: table !important;
 	}
-	.d-sm-table-row {
+	.d-sm-table- {
 		display: table-row !important;
 	}
 	.d-sm-table-cell {

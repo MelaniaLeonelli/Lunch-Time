@@ -15,6 +15,8 @@
 	integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
 	crossorigin="anonymous"></script>
 <body>
+<%String emailutente = request.getParameter("emailutente");
+%>
 
 	<header class="p-3 bg-dark text-white">
 		<div class="container">
@@ -37,9 +39,12 @@
 				<form action="index.jsp" method="POST">
 					<input type="image" src="logo2.png" alt="logo" id="logo">
 				</form>
-
+               	
 
 				<div class="text-end" id="headerButton">
+				<form action="Logout" method="post">
+						<input type="submit" class="btn btn-outline-light me-2"
+							value="Logout">
 					<div class="dropdown">
 						<button class="btn btn-outline-light me-2" id="socialBtnSmall">Social</button>
 						<div class="dropdown-content">
@@ -66,10 +71,7 @@
 							</ul>
 						</div>
 					</div>
-					<button type="button" class="btn btn-outline-light me-2"
-						id="loginBtnSmall" onclick="window.location.href='login.jsp'">Login</button>
-					<button type="button" class="btn btn-warning" id="registerBtnSmall"
-						onclick="window.location.href='register.jsp'">Registrati</button>
+					
 				</div>
 			</div>
 		</div>
@@ -88,15 +90,15 @@
 					id="navbarsExample08">
 					<ul class="navbar-nav">
 						<li class="nav-item"><a class="nav-link"
-							href="Catalogo.jsp">Catalogo</a></li>
+							href="CatalogoServlet">Catalogo</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="Preferiti.jsp">Preferiti</a></li>
+							href="SearchbyPreferitiServlet?emailutente=<%=emailutente%>">Preferiti</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="Profilo.jsp">Profilo</a></li>
+							href="ProfilePageServlet">Profilo</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="RicaricaTessera.jsp">Saldo</a></li>
+							href="RicaricaSaldo.jsp">Saldo</a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="Carrello.jsp">Carrello</a></li>
+							href="CartServlet?emailutente="<%=emailutente %>>Carrello</a></li>
 					</ul>
 				</div>
 			</div>

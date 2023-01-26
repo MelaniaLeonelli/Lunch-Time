@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.Prodotto;
 import model.ProdottoDAO;
 
-@WebServlet("/ProductPageServlet")
+@WebServlet("/PreferitiPageServlet")
 public class PreferitiPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

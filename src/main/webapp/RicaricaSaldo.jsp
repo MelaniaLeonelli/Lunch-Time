@@ -4,10 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="icon" type="image/x-icon" href="icona.ico">
+<link rel="icon" type="image/x-icon" href="logo.ico">
 <link rel="stylesheet" href="css/dropdown.css">
-<link rel="stylesheet" href="css/styleH.css">
-<link rel="stylesheet" href="css/styles.css">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -26,6 +24,9 @@
 	  Boolean role = (Boolean) session.getAttribute("adminRoles");
 	  session.setAttribute("emailutente", email);
 	  session.setAttribute("adminRoles", role);
+	  TesseraDAO t =new TesseraDAO();
+	  Tessera tessera =new Tessera();
+	  tessera = t.getTesseraData(email);
 	 if (email == null) { %>
 	<jsp:include page="headerGuest.jsp"></jsp:include>
 
@@ -40,47 +41,35 @@
 
 
 	<jsp:include page="searchbar.jsp"></jsp:include>
-
-	<section class="py-5">
-		<div class="container px-4 px-lg-5 mt-5">
-			<div
-				class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-				<%ArrayList<Prodotto> p = (ArrayList<Prodotto>) request.getAttribute("array");
-	  			int i = 0;
-	  		    if(p.size() == 0)
-	  		    {%>
-	  		    <main class="form-signin w-100 m-auto">
-		<input type="image" src="logo.png" id="logo_margin" width="10%"
-			height="55%" margin-left:="" 20px="">
-
-		<form action="LoginServlet" method="post">
-
-			<h1 class="h3 mb-3 fw-normal" id="registerEff">Non Hai Alcun Prodotto Nei Preferiti. <br> Non ti Piace Nulla?</h1>
-
-			<label> <a  href="CatalogoServlet" id="loginLink" style="color:#000000" > Aggiungilo Subito!</a>
-			</label>
-		</form>
-	</main>
-	  		    <% }
-	  		    else 
-	  			while(i < p.size()){%>
-				<div class="col mb-5">
-					<div class="card h-100">
-						<!-- Product details-->
-						<div class="card-body p-4">
-							<div class="text-center">
-								<!-- Product name-->
-								<h5 class="fw-bolder"><%=p.get(i).getNome()%></h5>
-							</div>
-						</div>
-					</div>
-				</div>
-				<%i++;
-	  			}%>
-
+	
+			
+			<div class="container">
+			  <div class="row">
+			    <div class="col">
+			    <a class="btn btn-warning . btn-lg "
+			    href="UpdateBalanceServlet?ricarica=5&codicetessera=<%=tessera.getCodicetessera()%> ">Ricarica 5 euro</a>
+			    </div>
+			    <div class="col">
+			    <a class="btn btn-warning . btn-lg"
+			    href="UpdateBalanceServlet?ricarica=10&codicetessera=<%=tessera.getCodicetessera()%> ">Ricarica 10 euro</a>
+			    </div>
+			    <div class="col">
+			    <a class="btn btn-warning . btn-lg"
+			    href="UpdateBalanceServlet?ricarica=20&codicetessera=<%=tessera.getCodicetessera()%> ">Ricarica 20 euro</a>
+			    </div>
+			    <div class="col">
+			     <a class="btn btn-warning . btn-lg"
+			   href="UpdateBalanceServlet?ricarica=50&codicetessera=<%=tessera.getCodicetessera()%> ">Ricarica 50 euro</a>
+			    </div>
+			    <div class="col">
+			    <a class="btn btn-warning . btn-lg"
+			   href="UpdateBalanceServlet?ricarica=100&codicetessera=<%=tessera.getCodicetessera()%> ">Ricarica 100 euro</a>
+			    </div>
+			  </div>
 			</div>
-		</div>
-	</section>
+			
+			
+		
 
 	<jsp:include page="footer.html"></jsp:include>
 

@@ -37,9 +37,11 @@
 <title>Ordini</title>
 </head>
 <body>
-	<%String email = (String) session.getAttribute("email");
+	<%String email = (String) session.getAttribute("emailutente");
 	  String name = (String) session.getAttribute("name");
 	  Boolean role = (Boolean) session.getAttribute("adminRoles");
+	  session.setAttribute("emailutente", email);
+	  session.setAttribute("adminRoles", role);
 	 if (email == null) { %>
 	<jsp:include page="headerGuest.jsp"></jsp:include>
 
@@ -78,7 +80,7 @@
 						<tr>
 							<th>#</th>
 							<th>Data</th>
-							<th>Ora</th>
+							
 							<th>Eseguito da</th>
 							<th>Visualizza dettagli</th>
 						</tr>

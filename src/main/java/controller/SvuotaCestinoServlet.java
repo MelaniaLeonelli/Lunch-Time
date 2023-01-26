@@ -14,19 +14,20 @@ import javax.servlet.http.HttpServletResponse;
 import model.CarrelloDAO;
 import model.Contiene;
 import model.ContieneDAO;
-import model.Prodotto;
-import model.ProdottoDAO;
 
-@WebServlet("/AddToCartServlet")
-public class AddToCartServlet extends HttpServlet {
+/**
+ * Servlet implementation class SvuotaCestino
+ */
+@WebServlet("/SvuotaCestinoServlet")
+public class SvuotaCestinoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddToCartServlet() {
+    public SvuotaCestinoServlet() {
         super();
-
+        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -34,59 +35,53 @@ public class AddToCartServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String emailutente = request.getParameter("emailutente");
-		String pcode = request.getParameter("pcode");
+		String emailutente = (String) request.getSession().getAttribute("emailutente");
 		Boolean role = (Boolean) request.getSession().getAttribute("adminRoles");
+		CarrelloDAO carrello = new CarrelloDAO();
+		 
 		
-		System.out.println(emailutente + " ha inserito il prodotto" + pcode + "nel carrello.");
 		ContieneDAO cDAO = new ContieneDAO();
 		CarrelloDAO carrDAO = new CarrelloDAO();
-		Prodotto p = new Prodotto();
-		ProdottoDAO pDAO = new ProdottoDAO();
+		try {
+			cDAO.cleanCart(emailutente);
+		} catch (ClassNotFoundException | SQLException e) {
+
+			e.printStackTrace();
+		}
+		System.out.println(emailutente + " ha svuotato il carrello");
+		ArrayList<Contiene> c = null;
+		try {
+			c = carrDAO.getCart(emailutente);
+		} catch (ClassNotFoundException e) {
+
+			e.printStackTrace();
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		try {
+		ArrayList<Contiene> carr = carrDAO.getCart(emailutente);
+		if(c != null) {
+			request.setAttribute("array", c);
+			request.getSession().setAttribute("emailutente", emailutente);
+			request.getSession().setAttribute("adminRoles", role);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("Carrello.jsp");
+			dispatcher.forward(request, response);
+		}
+	} catch (ClassNotFoundException e) {
 		
-		try {
-			p = pDAO.getProduct(pcode);
-		} catch (ClassNotFoundException e) {
+		e.printStackTrace();
+	} catch (SQLException e) {
 
-			e.printStackTrace();
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		}
-		try {
-			cDAO.addToCart(emailutente, pcode, 1, p.getPrezzo());
-		} catch (ClassNotFoundException e) {
-
-			e.printStackTrace();
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		}
-		
-		ArrayList<Contiene> c = null;System.out.println("contiene array creato");
-
-		try {
-			c = carrDAO.getCart(emailutente);System.out.println("carrello  creato");
-			System.out.println("Carrello di " + emailutente + ":" + c);
-		} catch (ClassNotFoundException e) {
-
-			e.printStackTrace();
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		}
-		System.out.println(emailutente+"servlet del carrello");
-		request.getSession().setAttribute("emailutente", emailutente);
-		request.getSession().setAttribute("pcode", pcode);System.out.println(emailutente+"prima del dispatcher");
-		RequestDispatcher dispatcher = request.getRequestDispatcher("CartServlet");
-		dispatcher.forward(request, response);
+		e.printStackTrace();
 	}
-	
+	}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

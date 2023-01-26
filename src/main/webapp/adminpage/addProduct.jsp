@@ -25,7 +25,7 @@
 
 	<main class="form-signin w-100 m-auto">
 
-		<form action="AddToDBServlet" method=post>
+		<form action="../AddToDBServlet" method=post>
 
 			<h1 class="h3 mb-3 fw-normal">Aggiungi un prodotto al Database</h1>
 

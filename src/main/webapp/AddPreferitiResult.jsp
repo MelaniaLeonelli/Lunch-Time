@@ -25,19 +25,32 @@
       String name = (String) session.getAttribute("name");
       Boolean role = (Boolean) session.getAttribute("adminRoles");
       session.setAttribute("emailutente",emailutente);
-      %>
-     
-    <jsp:include page="../headerAdmin.jsp"></jsp:include>
-    
-    
-      <h1 class="h3 mb-3 fw-normal" id="registerEff">Prodotto Rimosso Dal Catalogo :c
+      
+     if (emailutente == null) { %>
+    <jsp:include page="headerGuest.jsp"></jsp:include>
+
+    <% }
+    else if(role == Boolean.TRUE)
+     {%>
+    <jsp:include page="headerAdmin.jsp"></jsp:include>
+    <% }
+     else { %>
+    <jsp:include page="headerUtente.jsp"></jsp:include>
+    <%} %>
+    <form action="AddPreferitiServlet" method="post">
+     <%if(esiste == Boolean.FALSE){  %>
+      <h1 class="h3 mb-3 fw-normal" id="registerEff">Prodotto aggiunto ai preferiti!
       </h1>
-   
-      <label> <a href="CatalogoServlet" id="loginLink"> Torna alla home</a>
+     <%  }
+      else {%>
+      <h1 class="h3 mb-3 fw-normal" id="registerEff">Prodotto già Presente Nei Preferiti! <br> Ti Piace Cosi Tanto?
+      </h1>
+      <% } %>
+      <label> <a href="CatalogoServlet" id="loginLink"> Torna al catalogo</a>
       </label>
-    
+    </form>
   <div id="footerposRegEff">
-    <jsp:include page="adminFooter.html"></jsp:include>
+    <jsp:include page="footer.html"></jsp:include>
   </div>
 
 </body>
