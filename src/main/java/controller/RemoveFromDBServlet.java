@@ -1,4 +1,3 @@
-
 package controller;
 
 import java.io.IOException;
@@ -12,22 +11,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Preferisce;
-import model.PreferisceDAO;
-import model.Prodotto;
+import model.CarrelloDAO;
+import model.Contiene;
+import model.ContieneDAO;
 import model.ProdottoDAO;
 
-/**
- * Servlet implementation class SearchServlet
- */
-@WebServlet("/SearchbyPreferitiServlet")
-public class SearchbyPreferitiServlet extends HttpServlet {
+@WebServlet("/RemoveFromDBServlet")
+public class RemoveFromDBServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchbyPreferitiServlet() {
+    public RemoveFromDBServlet() {
         super();
 
     }
@@ -36,29 +32,24 @@ public class SearchbyPreferitiServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 String emailutente = (String) request.getSession().getAttribute("emailutente");
-		 Boolean role = (Boolean) request.getSession().getAttribute("adminRoles");
-		PreferisceDAO preDAO= new PreferisceDAO();
+		String email = request.getParameter("emailutente");
+		Boolean role = (Boolean) request.getSession().getAttribute("adminRoles");
+		String pcode = request.getParameter("pcode");
+		
 		ProdottoDAO pDAO = new ProdottoDAO();
-		ArrayList<Preferisce> a = null;
-		ArrayList<Prodotto> p =null; 
 		try {
-			a = preDAO.getPreferiti(emailutente);
-			p =pDAO.getPreferisce(a, emailutente);
-			System.out.println("l'email del tizio e\': "+emailutente+"servlet preferiti"); 
+			pDAO.deleteProduct(pcode);
 		} catch (ClassNotFoundException | SQLException e) {
 
 			e.printStackTrace();
 		}
-		System.out.println("a:" + a);
-		System.out.println("p:" + p);
-		request.getSession().setAttribute("emailutente", emailutente);
+		System.out.println("Hai rimosso dal db" + pcode);
+		request.setAttribute("emailutente",email);
 		request.getSession().setAttribute("adminRoles", role);
-		request.setAttribute("array", p);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("resultsPreferiti.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/adminpage/removeFromDBResult.jsp");
 		dispatcher.forward(request, response);
 	}
-
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

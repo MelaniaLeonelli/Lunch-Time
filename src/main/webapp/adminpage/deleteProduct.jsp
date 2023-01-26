@@ -20,19 +20,25 @@
 <title>Rimuovi prodotto</title>
 </head>
 <body class="text-center" id="corpo">
+<%String emailutente = (String) session.getAttribute("emailutente");
+	  String name = (String) session.getAttribute("nomeutente");
+	  Boolean role = (Boolean) session.getAttribute("adminRoles");
+	  session.setAttribute("emailutente", emailutente);
+	  session.setAttribute("adminRoles", role);
+	 %>
 
 	<jsp:include page="headerAdminPage.jsp"></jsp:include>
 
 	<main class="form-signin w-100 m-auto">
 
-		<form action="RemoveFromDBServlet" method=post>
+		<form action="/LunchTime/RemoveFromDBServlet" method=post>
 
 			<h1 class="h3 mb-3 fw-normal">Rimuovi un prodotto dal DataBase</h1>
 
 			<div class="form-floating" id="formdiv">
 				<input type="text" class="form-control" id="cp"
-					onfocus="getFocusCF()" onblur="blurInput()" type="text" name="idprodotto"
-					required placeholder="Codice Prodotto"> <label for="idprodotto">Codice
+					onfocus="getFocusCF()" onblur="blurInput()" type="text" name="pcode"
+					required placeholder="Codice Prodotto"> <label for="pcode">Codice
 					Prodotto</label>
 			</div>
 

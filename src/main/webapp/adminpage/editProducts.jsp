@@ -22,6 +22,10 @@
 <title>Modifica prodotto</title>
 </head>
 <body class="text-center" id="corpo">
+      String emailutente = (String) session.getAttribute("emailutente");
+	  Boolean role = (Boolean) session.getAttribute("adminRoles");
+	   session.setAttribute("emailutente", email);
+	  session.setAttribute("adminRoles", role);
 
 	<jsp:include page="headerAdminPage.jsp"></jsp:include>
 
@@ -45,7 +49,7 @@
 		<script>
 	function Ottieni() {
 	 	var UserOption = document.getElementById('products').value;
-	 	document.location.href="/LunchTime/EditProductServlet?idp="+UserOption;
+	 	document.location.href="/LunchTime/EditProductServlet?idprodotto="+UserOption;
 		}
 </script>
 

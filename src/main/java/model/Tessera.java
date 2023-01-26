@@ -3,13 +3,13 @@ package model;
 public class Tessera {
 	int codicetessera;
 	int categoria;
-	float saldo;
+	int saldo;
 	String emailutente;
 	
 	 public Tessera(){
 	     }
 	 
-	 public Tessera(int codicetessera, int categoria, float saldo, String emailutente){
+	 public Tessera(int codicetessera, int categoria, int saldo, String emailutente){
 		 this.codicetessera=codicetessera;
 		 this.categoria=categoria;
 		 this.saldo=saldo;
@@ -31,11 +31,11 @@ public class Tessera {
 			this.categoria = categoria;
 		}
 		
-		public float getSaldo() {
+		public int getSaldo() {
 			return saldo;
 		}
 
-		public void setSaldo(float saldo) {
+		public void setSaldo(int saldo) {
 			this.saldo = saldo;
 		}
 		

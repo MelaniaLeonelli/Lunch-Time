@@ -17,6 +17,7 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/style.css" rel="stylesheet" />
         <link rel="stylesheet" href="css/styleH.css">
+        <link rel="stylesheet" href="css/dropdown.css">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     </head>
     <body>
@@ -24,6 +25,8 @@
       <%String email = (String) session.getAttribute("emailutente");
 	  String name = (String) session.getAttribute("nomeutente");
 	  Boolean role = (Boolean) session.getAttribute("adminRoles");
+	  session.setAttribute("emailutente", email);
+	  session.setAttribute("adminRoles", role);
 	 if (email == null) { %>
 	<jsp:include page="headerGuest.jsp"></jsp:include>
 
@@ -32,30 +35,12 @@
 	 {%>
 	<jsp:include page="headerAdmin.jsp"></jsp:include>
 	<% }
-	 else { %>
+	 else {
+	 
+	  %>
 	<jsp:include page="headerUtente.jsp"></jsp:include>
 	<%} %>
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
         <!-- Masthead-->
         <header class="masthead bg-warning text-white text-center">
             <div class="container d-flex align-items-center flex-column">
@@ -80,22 +65,12 @@
             <div class="container" >
                 <!-- Menu del giorno Section Heading-->
                 <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Menu Del Giorno</h2>
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
+                </h2>
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
+                <a class="btn btn-warning "
+                     href="MenuDGServlet"> Puoi vederlo qui</a>
+                </h2>
+                            
         <br>
         <!-- About Section-->
         <section class="page-section bg-warning text-white mb-0" id="about">
@@ -125,24 +100,10 @@
                 </div>
             </div>
         </section>
-        
-        
-        
-        
-       
-                
-                
+          
                 
                 <jsp:include page="footer.html"></jsp:include>
                 
-                
-                
-        
-        
-       
-               
-        
-        
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
 </html>

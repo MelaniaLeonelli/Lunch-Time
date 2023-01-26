@@ -24,7 +24,9 @@
 
 	<%String emailutente = (String) session.getAttribute("emailutente");
 	  String name = (String) session.getAttribute("nomeutente");
-	  Boolean role = (Boolean) session.getAttribute("ruolo");
+	  Boolean role = (Boolean) session.getAttribute("adminRoles");
+	  session.setAttribute("emailutente", emailutente);
+	  session.setAttribute("adminRoles", role);
 	 if (emailutente == null) { %>
 	<jsp:include page="headerGuest.jsp"></jsp:include>
 
@@ -44,36 +46,34 @@
 			<div
 				class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
-				<%ArrayList<Contiene> carrello = (ArrayList<Contiene>) request.getAttribute("emailutente");
+				<%System.out.println(emailutente+"buonasÃ¨");
+				ArrayList<Contiene> carrello = (ArrayList<Contiene>) request.getAttribute("array");System.out.println(request.getAttribute("array"));
 	DecimalFormat decimalFormat = new DecimalFormat("#.##");
 	ProdottoDAO pDAO = new ProdottoDAO();%>
 				<%if(carrello.size() == 0)
-	%><h3>
-					Il carrello è vuoto<%;%>
-					<%
+	{%><h3>
+					Il carrello e vuoto </h3>
+					<%;}
 		
 	  int i = 0;
 	  while(i < carrello.size()){%>
 					<div class="col mb-5">
 						<div class="card h-100">
-							<!-- Product image-->
-							<img class="card-img-top"
-								src="<%=(pDAO.getProduct(carrello.get(i).getIdprodotto())).getImmagine()%>"
-								alt="...">
+						
 							<!-- Product details-->
 							<div class="card-body p-4">
 								<div class="text-center">
 									<!-- Product name-->
 									<h5 class="fw-bolder"><%=(pDAO.getProduct(carrello.get(i).getIdprodotto())).getNome()%></h5>
 									<!-- Product price-->
-									$<%=(pDAO.getProduct(carrello.get(i).getIdprodotto())).getPrezzo()%>
+									Euro <%=(pDAO.getProduct(carrello.get(i).getIdprodotto())).getPrezzo()%>
 								</div>
 							</div>
 							<!-- Product actions-->
 							<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 								<div class="text-center">
 									<a class="btn btn-outline-dark mt-auto product"
-										href="RemoveFromCartServlet?pcode=<%=carrello.get(i).getIdprodotto()%>&cf=<%=session.getAttribute("cf")%>">Rimuovi
+										href="RemoveFromCartServlet?pcode=<%=carrello.get(i).getIdprodotto()%>">Rimuovi
 										prodotto</a>
 								</div>
 							</div>
@@ -88,14 +88,18 @@
 		<% %>
 		<%if(carrello.size() != 0){%>
 		<p>
-			Totale: $<%=decimalFormat.format(cDAO.getTotal((String)session.getAttribute("cf")))%>
+			Totale: Euro <%=decimalFormat.format(cDAO.getTotal((String)session.getAttribute("emailutente")))%>
 			<%}; %>
 		</p>
 		<%if(carrello.size() != 0){%>
 		<div class="text-center">
-			<a class="wahwahButton btn btn-outline-dark mt-auto"
-				href="ExecuteOrderServlet?cf=<%=session.getAttribute("cf")%>">Ordina</a>
+			<a class="lunchtime btn btn-outline-dark mt-auto"
+				href="ExecuteOrderServlet">Ordina</a>
+				<a class="lunchtime btn btn-outline-dark mt-auto"
+				href="SvuotaCestinoServlet">Svuota Carrello</a>
 		</div>
+		
+		
 		<%}; %>
 	</section>
 

@@ -1,6 +1,6 @@
 package controller;
 
-import java.io.IOException;
+import java.io.IOException; 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -11,19 +11,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Acquisto;
-import model.AcquistoDAO;
-import model.Prodotto;
-import model.ProdottoDAO;
+import model.Utente;
+import model.UtenteDAO;
+import model.Tessera;
+import model.TesseraDAO;
 
-@WebServlet("/DetailsServlet")
-public class DetailsServlet extends HttpServlet {
+@WebServlet("/ProfilePageServlet")
+public class ProfilePageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DetailsServlet() {
+    public ProfilePageServlet() {
         super();
 
     }
@@ -33,28 +33,32 @@ public class DetailsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String emailutente = (String) request.getSession().getAttribute("emailutente");
+		String em = (String) request.getSession().getAttribute("emailutente");
 		Boolean role = (Boolean) request.getSession().getAttribute("adminRoles");
-		int orderCode = Integer.parseInt(request.getParameter("orderCode"));
-		
-		AcquistoDAO aDAO = new AcquistoDAO();
-		Acquisto a = new Acquisto();
-		ProdottoDAO pDAO = new ProdottoDAO();
-		Prodotto p = new Prodotto();
+		UtenteDAO uDAO = new UtenteDAO();
+		Utente u = new Utente();
+		TesseraDAO tDAO = new TesseraDAO();
+		Tessera t = new Tessera();
 
-		ArrayList<String> codes = null;
 		try {
-			codes = aDAO.getAcquisti(orderCode);
+			u = uDAO.getUserDatabyEmail(em);
+			t= tDAO.getTesseraData(em);
 		} catch (ClassNotFoundException | SQLException e) {
 
 			e.printStackTrace();
 		}
-		
-		request.setAttribute("codes", codes);
-		request.setAttribute("or", orderCode);
-		request.getSession().setAttribute("emailutente", emailutente);
 		request.getSession().setAttribute("adminRoles", role);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("fattura.jsp");
+		request.getSession().setAttribute("emailutente", em);
+		request.getSession().setAttribute("nomeutente", u.getNomeutente());
+		request.getSession().setAttribute("ruolo", u.getRuolo());
+		request.getSession().setAttribute("codtessera", t.getCodicetessera());
+		request.getSession().setAttribute("cattessera", t.getCategoria());
+		request.getSession().setAttribute("saldo", t.getSaldo());
+		System.out.println("nella servlet");
+		System.out.println(t.getCategoria());
+		System.out.println("nella servlet");
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("ProfilePage.jsp");
 		dispatcher.forward(request, response);
 	}
 	

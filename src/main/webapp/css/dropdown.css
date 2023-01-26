@@ -44,3 +44,9 @@
 .dropdown:hover .dropbtn {
 	background-color: #3e8e41;
 }
+div.container{
+	margin-top:40px;
+}
+.btn btn-outline-primary mt-auto product{
+	padding-right:20px;
+}

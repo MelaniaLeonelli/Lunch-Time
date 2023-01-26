@@ -10,12 +10,12 @@ import java.sql.DriverManager;
 
 public class TesseraDAO {
 	
-	public static String URL = "jdbc:mysql://127.0.0.1:3306/?user=root";
+	public static String URL = "jdbc:mysql://localhost:3306/lunchtime";
 	public static String USER = "root";
 	public static String PASS = "password";
 	
 	public void addTessera(String email, int codice,int categoria) throws SQLException, ClassNotFoundException {
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
 		stmt = con.prepareStatement("INSERT INTO tessera VALUES (?, ?, 0, ?)");
@@ -38,7 +38,7 @@ public class TesseraDAO {
 			while(rs.next()) {
 				t.setCodicetessera(Integer.parseInt(rs.getString("codicetessera")));
 				t.setCategoria(Integer.parseInt(rs.getString("categoria")));
-				t.setSaldo(Float.parseFloat(rs.getString("saldo")));
+				t.setSaldo(Integer.parseInt(rs.getString("saldo")));
 			}
 		} catch (SQLException e1) {
 			return null;
@@ -47,17 +47,19 @@ public class TesseraDAO {
 	}
 	
 
-	public void ricaricaTessera(String e,float r) throws SQLException, ClassNotFoundException {
+	public int ricaricaTessera(int c,int r) throws SQLException, ClassNotFoundException {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection(URL, USER, PASS);
 			PreparedStatement stmt;
 		
-			stmt = con.prepareStatement("UPDATE tessera SET saldo= saldo + ? FROM tessera WHERE tessera.codicetessera = ?");
-			stmt.setFloat(1, r);
-			stmt.setString(2, e);
-			ResultSet rs = stmt.executeQuery();
+			stmt = con.prepareStatement("UPDATE tessera SET saldo= saldo + ? WHERE codicetessera = ?;");
+			stmt.setInt(1, r);
+			stmt.setInt(2, c);
+			stmt.executeUpdate();
 			
+              return r;
 		}
+	
 	
 	
 }

@@ -55,9 +55,9 @@ public class SearchServlet extends HttpServlet {
 
 			e.printStackTrace();
 		}
-		request.setAttribute("name", a);
-		request.setAttribute("category", b);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("results.jsp");
+		request.setAttribute("nome", a);
+		request.setAttribute("categoria", b);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("result.jsp");
 		dispatcher.forward(request, response);
 	}
 

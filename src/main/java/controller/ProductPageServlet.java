@@ -1,9 +1,7 @@
-
 package controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,22 +10,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Preferisce;
-import model.PreferisceDAO;
 import model.Prodotto;
 import model.ProdottoDAO;
 
-/**
- * Servlet implementation class SearchServlet
- */
-@WebServlet("/SearchbyPreferitiServlet")
-public class SearchbyPreferitiServlet extends HttpServlet {
+@WebServlet("/ProductPageServlet")
+public class ProductPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchbyPreferitiServlet() {
+    public ProductPageServlet() {
         super();
 
     }
@@ -36,29 +29,26 @@ public class SearchbyPreferitiServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 String emailutente = (String) request.getSession().getAttribute("emailutente");
-		 Boolean role = (Boolean) request.getSession().getAttribute("adminRoles");
-		PreferisceDAO preDAO= new PreferisceDAO();
+		String emailutente = (String) request.getSession().getAttribute("emailutente");
+		Boolean role = (Boolean) request.getSession().getAttribute("adminRoles");
+		String pcode = request.getParameter("pcode");
+		
 		ProdottoDAO pDAO = new ProdottoDAO();
-		ArrayList<Preferisce> a = null;
-		ArrayList<Prodotto> p =null; 
+		Prodotto p = new Prodotto();
 		try {
-			a = preDAO.getPreferiti(emailutente);
-			p =pDAO.getPreferisce(a, emailutente);
-			System.out.println("l'email del tizio e\': "+emailutente+"servlet preferiti"); 
+			p = pDAO.getProduct(pcode);
 		} catch (ClassNotFoundException | SQLException e) {
 
 			e.printStackTrace();
 		}
-		System.out.println("a:" + a);
-		System.out.println("p:" + p);
-		request.getSession().setAttribute("emailutente", emailutente);
-		request.getSession().setAttribute("adminRoles", role);
-		request.setAttribute("array", p);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("resultsPreferiti.jsp");
+
+		request.setAttribute("product", p);
+		 request.getSession().setAttribute("emailutente", emailutente);
+		    request.getSession().setAttribute("adminRoles", role);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("productPage.jsp");
 		dispatcher.forward(request, response);
 	}
-
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

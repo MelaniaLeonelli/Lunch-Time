@@ -1,8 +1,6 @@
-
 package controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -12,22 +10,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Preferisce;
-import model.PreferisceDAO;
+import com.google.gson.Gson;
+
 import model.Prodotto;
 import model.ProdottoDAO;
 
 /**
  * Servlet implementation class SearchServlet
  */
-@WebServlet("/SearchbyPreferitiServlet")
-public class SearchbyPreferitiServlet extends HttpServlet {
+@WebServlet("/SearchAjaxServlet")
+public class SearchAjaxServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchbyPreferitiServlet() {
+    public SearchAjaxServlet() {
         super();
 
     }
@@ -36,27 +34,21 @@ public class SearchbyPreferitiServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 String emailutente = (String) request.getSession().getAttribute("emailutente");
-		 Boolean role = (Boolean) request.getSession().getAttribute("adminRoles");
-		PreferisceDAO preDAO= new PreferisceDAO();
+		
+		String nome = request.getParameter("cerca");
 		ProdottoDAO pDAO = new ProdottoDAO();
-		ArrayList<Preferisce> a = null;
-		ArrayList<Prodotto> p =null; 
+		ArrayList<Prodotto> a = null;
 		try {
-			a = preDAO.getPreferiti(emailutente);
-			p =pDAO.getPreferisce(a, emailutente);
-			System.out.println("l'email del tizio e\': "+emailutente+"servlet preferiti"); 
-		} catch (ClassNotFoundException | SQLException e) {
+			a = pDAO.doRetrieveByName(nome);
+		} catch (ClassNotFoundException e) {
 
 			e.printStackTrace();
 		}
-		System.out.println("a:" + a);
-		System.out.println("p:" + p);
-		request.getSession().setAttribute("emailutente", emailutente);
-		request.getSession().setAttribute("adminRoles", role);
-		request.setAttribute("array", p);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("resultsPreferiti.jsp");
-		dispatcher.forward(request, response);
+		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().write(convertListToJson(a));
+		
 	}
 
 	/**
@@ -66,5 +58,29 @@ public class SearchbyPreferitiServlet extends HttpServlet {
 		
 		doGet(request, response);
 	}
-
+	
+	
+	/*private String convertListToJson(ArrayList<Prodotto> list) {
+		StringBuilder s = new StringBuilder();
+		s.append("[");
+		for (Prodotto p : list) {
+			String nome = p.getNome().replace("\"", "\\\"");
+			s.append("\""+ p.getMarca() + " - " + nome + " - " + p.getCategoria() +"\",");
+		}
+		
+		if (s.length() > 0) 
+			s.setLength(s.length() - 1);
+		s.append("]");
+		
+		
+		return s.toString();
+	}*/
+	
+	private String convertListToJson(ArrayList<Prodotto> list) {
+		
+		String s = new Gson().toJson(list);
+		
+		return s;
+	}
 }
+

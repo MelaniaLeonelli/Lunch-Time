@@ -1,8 +1,6 @@
-
 package controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -12,22 +10,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Preferisce;
-import model.PreferisceDAO;
-import model.Prodotto;
-import model.ProdottoDAO;
+import model.Ordine;
+import model.OrdineDAO;
 
-/**
- * Servlet implementation class SearchServlet
- */
-@WebServlet("/SearchbyPreferitiServlet")
-public class SearchbyPreferitiServlet extends HttpServlet {
+@WebServlet("/OrderUtenteServlet")
+public class OrderUtenteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchbyPreferitiServlet() {
+    public OrderUtenteServlet() {
         super();
 
     }
@@ -36,29 +29,24 @@ public class SearchbyPreferitiServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 String emailutente = (String) request.getSession().getAttribute("emailutente");
-		 Boolean role = (Boolean) request.getSession().getAttribute("adminRoles");
-		PreferisceDAO preDAO= new PreferisceDAO();
-		ProdottoDAO pDAO = new ProdottoDAO();
-		ArrayList<Preferisce> a = null;
-		ArrayList<Prodotto> p =null; 
+		
+		String emailutente = (String) request.getSession().getAttribute("emailutente");
+		Boolean role = (Boolean) request.getSession().getAttribute("adminRoles");
+		OrdineDAO oDAO = new OrdineDAO();
+		ArrayList<Ordine> o = null;
 		try {
-			a = preDAO.getPreferiti(emailutente);
-			p =pDAO.getPreferisce(a, emailutente);
-			System.out.println("l'email del tizio e\': "+emailutente+"servlet preferiti"); 
-		} catch (ClassNotFoundException | SQLException e) {
+			o = oDAO.getOrdersUtente(emailutente);
+		} catch (ClassNotFoundException e) {
 
 			e.printStackTrace();
 		}
-		System.out.println("a:" + a);
-		System.out.println("p:" + p);
+		request.setAttribute("orders", o);
 		request.getSession().setAttribute("emailutente", emailutente);
 		request.getSession().setAttribute("adminRoles", role);
-		request.setAttribute("array", p);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("resultsPreferiti.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("allOrders.jsp");
 		dispatcher.forward(request, response);
 	}
-
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

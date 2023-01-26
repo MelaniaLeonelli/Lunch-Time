@@ -46,6 +46,7 @@ public class LoginServlet extends HttpServlet {
 				{
 					if (uDAO.login(emailutente, password) == 1)
 					{
+						System.out.println("il valore di ritorno è 1");
 						request.getSession().setAttribute("adminRoles", Boolean.TRUE);
 						request.getSession().setAttribute("emailutente", emailutente);
 						Utente u = uDAO.getUserData(emailutente, password);
@@ -56,6 +57,7 @@ public class LoginServlet extends HttpServlet {
 					
 					else if(uDAO.login(emailutente, password) == 2)
 					{
+						System.out.println("il valore di ritorno è 2");
 						request.getSession().setAttribute("adminRoles", Boolean.FALSE);
 						request.getSession().setAttribute("emailutente", emailutente);
 						Utente u = uDAO.getUserData(emailutente, password);
@@ -65,7 +67,7 @@ public class LoginServlet extends HttpServlet {
 					}
 					
 					else if(uDAO.login(emailutente, password) == 3)
-					{
+					{   System.out.println("il valore di ritorno è 3");
 						request.getSession().setAttribute("nonRegistrato", Boolean.TRUE);
 						dispatcher = request.getRequestDispatcher("loginResult.jsp");
 						dispatcher.forward(request, response);

@@ -11,7 +11,7 @@ import controller.DriverManagerConnectionPool;
 
 public class OrdineDAO {
 	
-	public static String URL = "jdbc:mysql://127.0.0.1:3306/?user=root";
+	public static String URL = "jdbc:mysql://localhost:3306/lunchtime";
 	public static String USER = "root";
 	public static String PASS = "password";
 
@@ -86,11 +86,11 @@ public class OrdineDAO {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
 		PreparedStatement stmt;
-		stmt = con.prepareStatement("INSERT INTO ordine VALUES (?, ?, ?, ?, ?)");
+		stmt = con.prepareStatement("INSERT INTO ordine VALUES (?, ?, ?, ?)");
 		stmt.setInt(1, CodOrdine);
 		stmt.setString(2, data);
-		stmt.setDouble(4, importoTotale);
-		stmt.setString(5, em);
+		stmt.setDouble(3, importoTotale);
+		stmt.setString(4, em);
 		stmt.executeUpdate();
 	}
 	
@@ -114,4 +114,28 @@ public class OrdineDAO {
 			return 0;
 	}
 	
+
+
+public ArrayList<Ordine> getOrdersUtente(String emailutente) throws ClassNotFoundException{
+	ArrayList<Ordine> ordini = new ArrayList<Ordine>();
+	try {
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection con = DriverManager.getConnection(URL, USER, PASS);
+		PreparedStatement stmt;
+		stmt = con.prepareStatement("SELECT CodOrdine, Data, emailutente FROM Ordine WHERE emailutente=?");
+		stmt.setString(1, emailutente);
+		ResultSet rs;
+		rs = stmt.executeQuery();
+		while(rs.next()) {
+			Ordine or = new Ordine();
+			or.setCodordine(rs.getInt("CodOrdine"));
+			or.setData(rs.getString("Data"));
+			or.setEmailutente(rs.getString("emailutente"));
+			ordini.add(or);
+		}
+		return ordini;
+	}catch(SQLException e) {
+		return null;
+	}
+}
 }

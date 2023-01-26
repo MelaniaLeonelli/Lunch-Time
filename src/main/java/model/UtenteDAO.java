@@ -74,6 +74,26 @@ public class UtenteDAO {
 		return u;
 	}
 	
+	public Utente getUserDatabyEmail(String e) throws SQLException, ClassNotFoundException {
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection con = DriverManager.getConnection(URL, USER, PASS);
+		PreparedStatement stmt;
+		stmt = con.prepareStatement("SELECT emailutente, Nomeutente, ruolo FROM utente WHERE utente.emailutente = ?");
+		stmt.setString(1, e);
+		ResultSet rs = stmt.executeQuery();
+		Utente u = new Utente();
+		try {
+			while(rs.next()) {
+				u.setEmailutente(rs.getString("emailutente"));
+				u.setNomeutente(rs.getString("Nomeutente"));
+				u.setRuolo(Integer.parseInt(rs.getString("ruolo")));
+			}
+		} catch (SQLException e1) {
+			return null;
+		}
+		return u;
+	}
+	
 
 	 public Utente getUserByEmailutente(String emailutente) throws SQLException, ClassNotFoundException {
 		Class.forName("com.mysql.cj.jdbc.Driver");

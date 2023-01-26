@@ -30,6 +30,8 @@ public class EditProductServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String pcode = request.getParameter("idprodotto");
+		Boolean role = (Boolean) request.getSession().getAttribute("adminRoles");
+
 		
 		ProdottoDAO pDAO = new ProdottoDAO();
 		Prodotto p = new Prodotto();
@@ -41,6 +43,7 @@ public class EditProductServlet extends HttpServlet {
 		}
 		
 		request.setAttribute("product", p);
+		request.getSession().setAttribute("adminRoles", role);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("editPage.jsp");
 		dispatcher.forward(request, response);
 	}

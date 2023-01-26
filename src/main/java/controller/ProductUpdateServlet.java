@@ -28,12 +28,14 @@ public class ProductUpdateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		Boolean role = (Boolean) request.getSession().getAttribute("adminRoles");
 		String pcode = request.getParameter("pcode");
 		String name = request.getParameter("name");
 		String category = request.getParameter("category");
-		String description = request.getParameter("description");
-		float cost = Float.parseFloat(request.getParameter("cost"));
+		String description = request.getParameter("descrizione");
+		System.out.println("quello che dovrebbe aggiornare nella descrizione");
+		System.out.println(description);
+		float cost = Float.parseFloat(request.getParameter("prezzo"));
 		
 		
 		ProdottoDAO pDAO = new ProdottoDAO();
@@ -48,6 +50,8 @@ public class ProductUpdateServlet extends HttpServlet {
 
 			e.printStackTrace();
 		}
+		
+		request.getSession().setAttribute("adminRoles", role);
 		request.setAttribute("product", p);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("aggiornato.jsp");
 		dispatcher.forward(request, response);
