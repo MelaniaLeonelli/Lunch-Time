@@ -30,9 +30,11 @@
     <%} %>
 
 
-    <jsp:include page="searchbar.jsp"></jsp:include>
+                
+                
 
     <section class="container" id=container2>
+    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Menu Del Giorno</h2>
         <div class="row">
         <%ArrayList<Prodotto> p = (ArrayList<Prodotto>) request.getAttribute("array");
                   int i = 0;
@@ -47,9 +49,10 @@
 					    <div class="fw-bolder text-center">
 					      <h5><%=p.get(i).getNome()%></h5>
 					    </div>
+					    <%if (emailutente  != null) { %>
 					    <a class="btn btn-outline-warning"
 									href="AddToCartServlet?pcode=<%=p.get(i).getIdprodotto()%>&emailutente=<%=emailutente%>">
-									Aggiungi al carrello</a>   <%System.out.println("sono nela jsp e l'id prodotto è:"+p.get(i).getIdprodotto()); %>
+									Aggiungi al carrello</a><% } %>   <%System.out.println("sono nela jsp e l'id prodotto è:"+p.get(i).getIdprodotto()); %>
 					     </div>
 					     
 					</div>
@@ -67,8 +70,6 @@
     
     <jsp:include page="footer.html"></jsp:include>
 
-    <script
-        src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="js/ajaxsearch.js"></script>
+   
 </body>
 </html>

@@ -14,7 +14,7 @@
 	crossorigin="anonymous"></script>
 <script type="text/javascript" src="../sfondo.js"></script>
 <link rel="icon" type="image/x-icon" href="../icona.ico">
-<link rel="icon" type="image/x-icon" href="../logo.ico">
+<link rel="icon" type="image/x-icon" href="../logo.png">
 <link rel="stylesheet" href="../css/styleH.css">
 <link rel="stylesheet" href="../css/styles.css">
 <link rel="stylesheet" href="../css/dropdown.css">
@@ -22,10 +22,10 @@
 <title>Modifica prodotto</title>
 </head>
 <body class="text-center" id="corpo">
-      String emailutente = (String) session.getAttribute("emailutente");
+     <%String email = (String) session.getAttribute("emailutente");
 	  Boolean role = (Boolean) session.getAttribute("adminRoles");
 	   session.setAttribute("emailutente", email);
-	  session.setAttribute("adminRoles", role);
+	  session.setAttribute("adminRoles", role); %>
 
 	<jsp:include page="headerAdminPage.jsp"></jsp:include>
 

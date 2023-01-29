@@ -39,7 +39,7 @@
 	<jsp:include page="headerUtente.jsp"></jsp:include>
 	<%} %>
 
-	<jsp:include page="searchbar.jsp"></jsp:include>
+	
 
 	<section class="py-5">
 		<div class="container px-4 px-lg-5 mt-5">
@@ -105,8 +105,6 @@
 
 	<jsp:include page="footer.html"></jsp:include>
 
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script src="js/ajaxsearch.js"></script>
+
 </body>
 </html>

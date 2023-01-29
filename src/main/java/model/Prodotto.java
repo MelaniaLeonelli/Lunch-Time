@@ -5,7 +5,6 @@ public class Prodotto{
 	String nome;
 	String categoria;
 	float prezzo;
-	String immagine;
 	String descrizione;
 	int disponibile;
 	
@@ -41,15 +40,7 @@ public class Prodotto{
 	public void setPrezzo(float prezzo) {
 		this.prezzo = prezzo;
 	}
-	
-	public String getImmagine() {
-		return immagine;
-	}
-
-	public void setImmagine(String immagine) {
-		this.immagine = immagine;
-	}
-	
+		
 	public String getDescrizione() {
 		return descrizione;
 	}
@@ -68,6 +59,6 @@ public class Prodotto{
 	
 	@Override 
 	public String toString(){
-		return "Prodotto [idprodotto="+idprodotto+",nome"+nome+",categoria="+categoria+",Prezzo="+prezzo+",Immagine="+immagine+",Descrizione="+descrizione+",Disponibile="+disponibile+"]";
+		return "Prodotto [idprodotto="+idprodotto+",nome"+nome+",categoria="+categoria+",Prezzo="+prezzo+",Descrizione="+descrizione+",Disponibile="+disponibile+"]";
 	}
 }

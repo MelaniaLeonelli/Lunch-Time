@@ -30,15 +30,15 @@
 			<h1 class="h3 mb-3 fw-normal">Aggiungi un prodotto al Database</h1>
 
 			<div class="form-floating" id="formdiv">
-				<input type="text" class="form-control" id="idprodotto"
-					onfocus="getFocusCF()" onblur="blurInput()" type="text" name="idprodotto"
-					required placeholder="idprodotto"> <label for="cp">Codice
+				<input type="text" class="form-control" id="idp"
+					onfocus="getFocusCF()" onblur="blurInput()" type="text" name="idp"
+					required placeholder="idprodotto"> <label for="idp">Codice
 					Prodotto</label>
 			</div>
 			<div class="form-floating" id="formdiv">
-				<input type="text" class="form-control" id="nome"
+				<input type="text" class="form-control" id="name"
 					onfocus="getFocusName()" onblur="blurInput()" type="text"
-					name="nome" required placeholder="Nome"> <label for="nome">Nome</label>
+					name="name" required placeholder="Name"> <label for="name">Nome</label>
 			</div>
 			<div class="form-floating" id="formdiv">
 				<input type="text" class="form-control" id="categoria"
@@ -53,10 +53,10 @@
 					name="prezzo" placeholder="Costo"> <label for="costo">Prezzo</label>
 			</div>
 			<div class="form-floating" id="formdiv">
-				<input type="text" class="form-control" id="immagine"
+				<input type="text" class="form-control" id="disponibile"
 					onfocus="getFocusCity()" onblur="blurInput()" type="text"
-					name="immagine" placeholder="Immagine"> <label
-					for="immagine">Immagine</label>
+					name="disponibile" placeholder="Disponibile"> <label
+					for="disponibile">Disponibile</label>
 			</div>
 			<div class="form-floating" id="formdiv">
 				<input type="text" class="form-control" id="genere"

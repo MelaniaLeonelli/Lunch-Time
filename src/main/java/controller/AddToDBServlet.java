@@ -36,20 +36,29 @@ public class AddToDBServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		String categoria = request.getParameter("categoria");
 		float prezzo = Float.parseFloat(request.getParameter("prezzo"));
-		String img = request.getParameter("img");
 		String descrizione = request.getParameter("descrizione");
 		int disponibile = Integer.parseInt(request.getParameter("disponibile"));
+		boolean esiste =Boolean.FALSE; 
 		
-		System.out.println("Hai inserito il prodotto " + name + "(" + idp + ")" + " nel database.");
+		
 		ProdottoDAO pDAO = new ProdottoDAO();
 		
 		try {
-			pDAO.addProduct(idp, name, categoria, prezzo, img, descrizione, disponibile);
+			int x=pDAO.esisteProdotto(idp);
+			if(x==0) {
+			
+			pDAO.addProduct(idp, name, categoria, prezzo, descrizione, disponibile);
+			System.out.println("Hai inserito il prodotto " + name + "(" + idp + ")" + " nel database.");
+			}
+			else {
+				esiste=Boolean.TRUE;
+			}
 		} catch (ClassNotFoundException | SQLException e) {
-
+		
 			e.printStackTrace();
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("addToDBResult.jsp");
+		request.getSession().setAttribute("Exists", esiste);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/adminpage/addToDBResult.jsp");
 		dispatcher.forward(request, response);
 	}
 	

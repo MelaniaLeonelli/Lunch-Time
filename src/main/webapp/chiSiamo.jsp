@@ -22,10 +22,11 @@
 <link rel="icon" type="image/x-icon" href="icona.ico" />
 </head>
 <body>
-	<%String email = (String) session.getAttribute("email");
-	  String name = (String) session.getAttribute("name");
-	  String brand = (String) session.getAttribute("brand");
+	<%String email = (String) session.getAttribute("emailutente");
+	  String name = (String) session.getAttribute("nomeutente");
 	  Boolean role = (Boolean) session.getAttribute("adminRoles");
+	  session.setAttribute("emailutente", email);
+	  session.setAttribute("adminRoles", role);
 	 if (email == null) { %>
 	<jsp:include page="headerGuest.jsp"></jsp:include>
 
@@ -38,7 +39,7 @@
 	<jsp:include page="headerUtente.jsp"></jsp:include>
 	<%} %>
 
-	<jsp:include page="searchbar.jsp"></jsp:include>
+
 
 	<div class="jumbotron">
 		<div class="container">
@@ -50,8 +51,5 @@
 
 	<jsp:include page="footer.html"></jsp:include>
 
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script src="js/ajaxsearch.js"></script>
 </body>
 </html>

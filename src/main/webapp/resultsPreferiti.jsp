@@ -38,9 +38,6 @@
 	<jsp:include page="headerUtente.jsp"></jsp:include>
 	<%} %>
 
-
-	<jsp:include page="searchbar.jsp"></jsp:include>
-
 	<section class="py-5">
 		<div class="container px-4 px-lg-5 mt-5">
 			<div
@@ -71,6 +68,9 @@
 							<div class="text-center">
 								<!-- Product name-->
 								<h5 class="fw-bolder"><%=p.get(i).getNome()%></h5>
+								<a class="btn btn-outline-danger"
+									href="RemovePreferitiServlet?pcode=<%=p.get(i).getIdprodotto()%>&emailutente=<%=email%>">
+									Rimuovi dai preferiti</a>
 							</div>
 						</div>
 					</div>
@@ -84,8 +84,6 @@
 
 	<jsp:include page="footer.html"></jsp:include>
 
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script src="js/ajaxsearch.js"></script>
+
 </body>
 </html>

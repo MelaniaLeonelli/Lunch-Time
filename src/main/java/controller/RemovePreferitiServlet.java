@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,52 +11,52 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Preferisce;
+import model.PreferisceDAO;
 import model.Prodotto;
 import model.ProdottoDAO;
 
-@WebServlet("/ProductUpdateServlet")
-public class ProductUpdateServlet extends HttpServlet {
+@WebServlet("/RemovePreferitiServlet")
+public class RemovePreferitiServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ProductUpdateServlet() {
+    public RemovePreferitiServlet() {
         super();
 
     }
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Boolean role = (Boolean) request.getSession().getAttribute("adminRoles");
+		
+		String emailutente = request.getParameter("emailutente");
 		String pcode = request.getParameter("pcode");
-		String name = request.getParameter("name");
-		String category = request.getParameter("category");
-		String description = request.getParameter("descrizione");
-		int disponibile =Integer.parseInt(request.getParameter("disponibile"));
-		System.out.println("quello che dovrebbe aggiornare nella descrizione");
-		System.out.println(description);
-		float cost = Float.parseFloat(request.getParameter("prezzo"));
+		Boolean role = (Boolean) request.getSession().getAttribute("adminRoles");
 		
 		
-		ProdottoDAO pDAO = new ProdottoDAO();
-		Prodotto p = new Prodotto();
-		
+		PreferisceDAO pDAO = new PreferisceDAO();
 		try {
-			System.out.println(pcode + name + category + cost+ description+ disponibile);
-			pDAO.updateProduct(pcode, name, category, cost,description, disponibile);
-			p = pDAO.getProduct(pcode);
-			System.out.println(p);
-		} catch (ClassNotFoundException | SQLException e) {
+			
+			pDAO.deletePreferito(pcode, emailutente);
+			System.out.println(emailutente + " ha eliminato il prodotto" + pcode + "dai preferiti.");
+			
+				
+		} catch (ClassNotFoundException e) {
+
+			e.printStackTrace();
+		} catch (SQLException e) {
 
 			e.printStackTrace();
 		}
-		
+		request.getSession().setAttribute("emailutente", emailutente);
 		request.getSession().setAttribute("adminRoles", role);
-		request.setAttribute("product", p);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("aggiornato.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("RemovePreferitiResult.jsp");
 		dispatcher.forward(request, response);
+	
 	}
 	
 	/**

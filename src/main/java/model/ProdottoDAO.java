@@ -55,18 +55,17 @@ public class ProdottoDAO {
   }
   
   
-  public void addProduct(String idProdotto, String nome, String categoria, float prezzo, String immagine, String descrizione, int disponibile) throws SQLException, ClassNotFoundException {
+  public void addProduct(String idProdotto, String nome, String categoria, float prezzo,  String descrizione, int disponibile) throws SQLException, ClassNotFoundException {
     Class.forName("com.mysql.cj.jdbc.Driver");
     Connection con = DriverManager.getConnection(URL, USER, PASS);
     PreparedStatement stmt;
-    stmt = con.prepareStatement("INSERT INTO prodotto VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    stmt = con.prepareStatement("INSERT INTO prodotto VALUES (?, ?, ?, ?, ?, ?)");
     stmt.setString(1, idProdotto);     
     stmt.setString(2, nome);
     stmt.setString(3, categoria);     
-    stmt.setFloat(4, prezzo); 
-    stmt.setString(5, immagine);     
-    stmt.setString(6, descrizione); 
-    stmt.setInt(7, disponibile);
+    stmt.setFloat(4, prezzo);     
+    stmt.setString(5, descrizione); 
+    stmt.setInt(6, disponibile);
     stmt.executeUpdate();
     
   }
@@ -85,7 +84,7 @@ public class ProdottoDAO {
     Class.forName("com.mysql.cj.jdbc.Driver");
     Connection con = DriverManager.getConnection(URL, USER, PASS);
     PreparedStatement stmt;
-    stmt = con.prepareStatement("SELECT nome, idprodotto, categoria, prezzo, immagine, descrizione, disponibile FROM prodotto WHERE idProdotto = ?");
+    stmt = con.prepareStatement("SELECT nome, idprodotto, categoria, prezzo, descrizione, disponibile FROM prodotto WHERE idProdotto = ?");
     stmt.setString(1, idProdotto);
     ResultSet rs = stmt.executeQuery();
     try {
@@ -95,7 +94,6 @@ public class ProdottoDAO {
             p.setIdprodotto(rs.getString("idprodotto"));
             p.setCategoria(rs.getString("categoria"));
             p.setPrezzo(Float.parseFloat(rs.getString("prezzo")));
-            p.setImmagine(rs.getString("immagine"));
             p.setDescrizione(rs.getString("descrizione"));
             p.setDisponibile(Integer.parseInt(rs.getString("disponibile")));
             return p;
@@ -137,16 +135,17 @@ public class ProdottoDAO {
         return null;
       }
       
-      public void updateProduct(String idProdotto, String name, String category, float price, String description) throws SQLException, ClassNotFoundException{
+      public void updateProduct(String idProdotto, String name, String category, float price, String description, int disponibile) throws SQLException, ClassNotFoundException{
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection con = DriverManager.getConnection(URL, USER, PASS);
         PreparedStatement stmt;
-        stmt = con.prepareStatement("UPDATE prodotto SET nome = ?, categoria = ?, prezzo = ?, descrizione = ?  WHERE idprodotto = ?");
+        stmt = con.prepareStatement("UPDATE prodotto SET nome = ?, categoria = ?, prezzo = ?, descrizione = ?, disponibile= ?  WHERE idprodotto = ?");
         stmt.setString(1, name);
         stmt.setString(2, category);
         stmt.setFloat(3, price);
         stmt.setString(4, description);
-        stmt.setString(5, idProdotto);
+        stmt.setInt(5, disponibile);
+        stmt.setString(6, idProdotto);
         stmt.executeUpdate();
       }
       public ArrayList<Prodotto> getPreferisce(ArrayList<Preferisce> a,String em) throws SQLException, ClassNotFoundException {
@@ -157,7 +156,7 @@ public class ProdottoDAO {
     	        int i=0;
     	    
     	      while(i<a.size()) {
-    	        stmt = con.prepareStatement("SELECT nome, descrizione FROM prodotto WHERE prodotto.idprodotto =? ");
+    	        stmt = con.prepareStatement("SELECT  IdProdotto, nome, descrizione FROM prodotto WHERE prodotto.idprodotto =? ");
     	        Preferisce ale=a.get(i);
     	        String s =ale.getIdprodotto();
     	        System.out.println(a.size());
@@ -167,6 +166,7 @@ public class ProdottoDAO {
     	        rs.next();
     	        p.setNome(rs.getString("nome"));
     	        p.setDescrizione(rs.getString("descrizione"));
+    	        p.setIdprodotto(rs.getString("IdProdotto"));
     	        
     	         prodotti.add(p);
     	         i++;
@@ -178,7 +178,7 @@ public class ProdottoDAO {
     	        Class.forName("com.mysql.cj.jdbc.Driver");
     	        Connection con = DriverManager.getConnection(URL, USER, PASS);
     	        PreparedStatement stmt;
-    	        stmt = con.prepareStatement("SELECT nome, idprodotto, categoria, prezzo, immagine, descrizione, disponibile FROM prodotto");
+    	        stmt = con.prepareStatement("SELECT nome, idprodotto, categoria, prezzo,  descrizione, disponibile FROM prodotto");
     	        ResultSet rs = stmt.executeQuery();
     	        while(rs.next()) {
     	          Prodotto p = new Prodotto();
@@ -186,14 +186,13 @@ public class ProdottoDAO {
     	          p.setNome(rs.getString("nome"));
     	          p.setCategoria(rs.getString("categoria"));
     	          p.setPrezzo(Float.parseFloat(rs.getString("prezzo")));
-    	          p.setImmagine(rs.getString("immagine"));
     	          p.setDescrizione(rs.getString("descrizione"));
     	          p.setDisponibile(Integer.parseInt(rs.getString("disponibile")));
     	          prodotti.add(p);
     	        
     	        }
     	        return prodotti;
-    	        
+    	       
     	    }
     	  
     	  public ArrayList<Prodotto> getMenuDG() throws SQLException, ClassNotFoundException {
@@ -214,5 +213,27 @@ public class ProdottoDAO {
     				}return disponibili;
     		
     		}
+    	  
+    	  public int esisteProdotto(String IdProdotto) throws ClassNotFoundException, SQLException{
+    		  Class.forName("com.mysql.cj.jdbc.Driver");
+    		    Connection con = DriverManager.getConnection(URL, USER, PASS);
+    		    PreparedStatement stmt;
+    		    stmt = con.prepareStatement("SELECT IdProdotto FROM prodotto WHERE IdProdotto=?");
+    		    stmt.setString(1, IdProdotto);
+    		    ResultSet rs =stmt.executeQuery();
+    		    int check=0;
+    		    while(rs.next()) {
+    		        Preferisce p = new Preferisce();
+    		        p.setIdprodotto(rs.getString("IdProdotto"));
+    		        System.out.println("db"+p.getIdprodotto()+"parametro"+IdProdotto);
+    		        if((p.getIdprodotto()).equals(IdProdotto)) 
+    		        {
+    		        	check=1;
+    		        }
+    		    }
+    		    System.out.println("sono io il check adesso:"+check);
+    		    return check;
+    		        
+    	  }
     	}
     

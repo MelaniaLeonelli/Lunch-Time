@@ -5,7 +5,6 @@
 <head>
 <link rel="icon" type="image/x-icon" href="icona.ico">
 <link rel="stylesheet" href="css/loginstyle.css">
-<link rel="stylesheet" href="css/dropdown.css">
 <link
   href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
   rel="stylesheet"
@@ -24,39 +23,29 @@
   <%String emailutente = (String) session.getAttribute("emailutente");
       String name = (String) session.getAttribute("name");
       Boolean role = (Boolean) session.getAttribute("adminRoles");
-      Boolean esiste = (Boolean) session.getAttribute("Exists");
       session.setAttribute("emailutente",emailutente);
       
      if (emailutente == null) { %>
-    <jsp:include page="../headerGuest.jsp"></jsp:include>
+    <jsp:include page="headerGuest.jsp"></jsp:include>
 
     <% }
     else if(role == Boolean.TRUE)
      {%>
-    <jsp:include page="../headerAdmin.jsp"></jsp:include>
+    <jsp:include page="headerAdmin.jsp"></jsp:include>
     <% }
      else { %>
-    <jsp:include page="../headerUtente.jsp"></jsp:include>
+    <jsp:include page="headerUtente.jsp"></jsp:include>
     <%} %>
     <form action="AddPreferitiServlet" method="post">
-    <%if(esiste== Boolean.TRUE) 
-    {%>
-     <h1 class="h3 mb-3 fw-normal" id="registerEff">Prodotto Già Presente Nel Catalogo.
+     
+      <h1 class="h3 mb-3 fw-normal" id="registerEff">Prodotto rimosso dai preferiti!
       </h1>
      
       <label> <a href="CatalogoServlet" id="loginLink"> Torna al catalogo</a>
       </label>
-      
-    <% }else {%>
-      <h1 class="h3 mb-3 fw-normal" id="registerEff">Prodotto Aggiunto con Successo!
-      </h1>
-     
-      <label> <a href="CatalogoServlet" id="loginLink"> Torna al catalogo</a>
-      </label>
-      <% }%>
     </form>
   <div id="footerposRegEff">
-    <jsp:include page="../footer.html"></jsp:include>
+    <jsp:include page="footer.html"></jsp:include>
   </div>
 
 </body>

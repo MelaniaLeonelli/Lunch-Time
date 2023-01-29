@@ -33,9 +33,14 @@ public class SearchServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		String emailutente = (String) request.getSession().getAttribute("emailutente");
+		Boolean role = (Boolean) request.getSession().getAttribute("adminRoles");
 		String nome = request.getParameter("cerca");
 		ProdottoDAO pDAO = new ProdottoDAO();
+		
+		System.out.println(" DENTRO la SearchServlet il nome che dovrebbe prendersi dalla searchbar"+nome);
+		
+		
 		ArrayList<Prodotto> a = null;
 		try {
 			a = pDAO.doRetrieveByName(nome);
@@ -55,6 +60,8 @@ public class SearchServlet extends HttpServlet {
 
 			e.printStackTrace();
 		}
+		request.getSession().setAttribute("emailutente", emailutente);
+	    request.getSession().setAttribute("adminRoles", role);
 		request.setAttribute("nome", a);
 		request.setAttribute("categoria", b);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("result.jsp");

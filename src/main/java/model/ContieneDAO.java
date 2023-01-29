@@ -15,13 +15,13 @@ public class ContieneDAO {
 	public void addToCart(String em, String pcode, int quantita, double importoTotale) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection(URL, USER, PASS);
-		PreparedStatement stmt; System.out.println("sto in contiene dao prima dell'insert");
+		PreparedStatement stmt; 
 		stmt = con.prepareStatement("INSERT INTO contiene VALUES(?, ?, '1', ?);");
-		stmt.setString(1, pcode);System.out.println("sto in contiene dao dopo l'insert e dopo il pcode");
-		stmt.setString(2, em);System.out.println("em messo");
-		stmt.setDouble(3, importoTotale);System.out.println("importoTotale messo");
+		stmt.setString(1, pcode);
+		stmt.setString(2, em);
+		stmt.setDouble(3, importoTotale);
 		System.out.println("stmt:" + stmt);
-		stmt.executeUpdate();System.out.println("ultima operazione del dao");
+		stmt.executeUpdate();
 	}
 	
 	public void removeFromCart(String em, String IdProdotto) throws ClassNotFoundException, SQLException {

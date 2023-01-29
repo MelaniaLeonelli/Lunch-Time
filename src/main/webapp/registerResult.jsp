@@ -47,7 +47,7 @@
 else{%>
 	<jsp:include page="headerRegEff.jsp"></jsp:include>
 	<main class="form-signin w-100 m-auto">
-		<input type="image" src="logo.ico" id="logo_margin" width="60%"
+		<input type="image" src="logo.png" id="logo_margin" width="60%"
 			height="55%" margin-left:="" 20px="">
 
 		<form action="LoginServlet" method="post">

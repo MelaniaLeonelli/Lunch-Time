@@ -31,7 +31,7 @@ public class ProductPageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String emailutente = (String) request.getSession().getAttribute("emailutente");
 		Boolean role = (Boolean) request.getSession().getAttribute("adminRoles");
-		String pcode = request.getParameter("pcode");
+		String pcode = request.getParameter("idcode");
 		
 		ProdottoDAO pDAO = new ProdottoDAO();
 		Prodotto p = new Prodotto();
@@ -42,8 +42,9 @@ public class ProductPageServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		request.setAttribute("product", p);
-		 request.getSession().setAttribute("emailutente", emailutente);
+		    request.setAttribute("product", p);
+		    System.out.println("il prodotto che dovrebbe passare"+p);
+		    request.getSession().setAttribute("emailutente", emailutente);
 		    request.getSession().setAttribute("adminRoles", role);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("productPage.jsp");
 		dispatcher.forward(request, response);

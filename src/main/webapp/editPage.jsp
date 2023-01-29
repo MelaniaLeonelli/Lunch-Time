@@ -56,6 +56,10 @@
 	<div class="form-floating" contentEditable="true" id="formdiv">
 		<input type="text" class="form-control" id = "descrizione" type = "text" name = "descrizione" onblur = "blurInput()" placeholder = "<%=p.getDescrizione()%>" value="<%=p.getDescrizione()%>">
 	</div>
+	<label for "nome"><b>Disponibile</b>:</label>
+	<div class="form-floating" contentEditable="true" id="formdiv">
+		<input type="text" class="form-control" id = "disponibile" type = "text" name = "disponibile" onblur = "blurInput()" placeholder = "<%=p.getDisponibile()%>" value="<%=p.getDisponibile()%>">
+	</div>
 	
 	<button id = "editBtn" class="w-100 btn btn-lg btn-primary" type="submit">Modifica il prodotto</button>
   </form>

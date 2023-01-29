@@ -25,6 +25,7 @@
 
   <%String email = (String) session.getAttribute("emailutente");
     String name = (String) session.getAttribute("name");
+    int code = (int) session.getAttribute("codice");
     Boolean role = (Boolean) session.getAttribute("adminRoles");
     session.setAttribute("emailutente", email);
 	session.setAttribute("adminRoles", role);
@@ -40,12 +41,16 @@
   <jsp:include page="headerUtente.jsp"></jsp:include>
   <%} %>
 
-  <jsp:include page="searchbar.jsp"></jsp:include>
+  
 
   <%Ordine o = (Ordine) request.getAttribute("o");%>
 
   <div id="formdivAlto">
     <h3>Grazie per aver effettuato l'ordine!</h3>
+  </div>
+  
+  <div id="formdivAlto">
+    <h3>Ecco il tuo codice Ordine: <%=code%></h3>
   </div>
 
   <label> <a href="index.jsp" id="purpleLink"> Torna alla
@@ -54,9 +59,7 @@
 
 
 
-  <script
-    src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="js/ajaxsearch.js"></script>
+  
 
   <div id="footerposOrdEff">
     <jsp:include page="footer.html"></jsp:include>

@@ -32,14 +32,14 @@ public class PreferisceDAO {
 	    stmt.setString(1,em);
 	    stmt.setString(2, IdProdotto);
 	    ResultSet rs =stmt.executeQuery();
-	    int check=0;System.out.println("prima del while");
-	    while(rs.next()) {System.out.println("appena entrato nel while");
-	        Preferisce p = new Preferisce();System.out.println("prima del set");
+	    int check=0;
+	    while(rs.next()) {
+	        Preferisce p = new Preferisce();
 	        p.setIdprodotto(rs.getString("IdProdotto"));
 	        p.setEmailutente(em);
 	        System.out.println("db"+p.getIdprodotto()+"parametro"+IdProdotto);
 	        if((p.getIdprodotto()).equals(IdProdotto)) 
-	        {System.out.println("se mi vedi il check è partito");
+	        {
 	        	check=1;
 	        }
 	    }
@@ -51,7 +51,7 @@ public class PreferisceDAO {
     Class.forName("com.mysql.cj.jdbc.Driver");
     Connection con = DriverManager.getConnection(URL, USER, PASS);
     PreparedStatement stmt;
-    stmt = con.prepareStatement("DELETE INTO preferisce VALUES(?, ?)");
+    stmt = con.prepareStatement("DELETE FROM preferisce WHERE IdProdotto=? AND emailutente=?");
     stmt.setString(1, IdProdotto);
     stmt.setString(2, em);
     stmt.executeUpdate();

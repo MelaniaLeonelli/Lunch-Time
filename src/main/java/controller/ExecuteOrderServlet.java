@@ -133,6 +133,7 @@ public class ExecuteOrderServlet extends HttpServlet {
     System.out.println(emailutente + "ha effettuato l'ordine" + latest);
     
     request.setAttribute("CodOrdine", o);
+    request.getSession().setAttribute("codice", latest);
     request.getSession().setAttribute("emailutente", emailutente);
 	request.getSession().setAttribute("adminRoles", role);
     RequestDispatcher dispatcher = request.getRequestDispatcher("ordineeffettuato.jsp");
