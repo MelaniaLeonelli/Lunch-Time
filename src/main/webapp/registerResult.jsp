@@ -31,8 +31,7 @@
 
 		<form action="LoginServlet" method="post">
 
-			<h1 class="h3 mb-3 fw-normal" id="registerEff">Registrazione
-				Completata!</h1>
+			<h1 class="h3 mb-3 fw-normal" id="registerEff">Registrazione Completata!</h1>
 
 			<label> <a href="login.jsp" id="loginLink"> Vai al Login</a>
 			</label>
@@ -52,8 +51,7 @@ else{%>
 
 		<form action="LoginServlet" method="post">
 
-			<h1 class="h3 mb-3 fw-normal" id="registerEff">Utente già
-				registrato.</h1>
+			<h1 class="h3 mb-3 fw-normal" id="registerEff">Utente già registrato.</h1>
 
 			<label> <a href="login.jsp" id="loginLink">Prova a <b>loggare</b></a>
 			</label>

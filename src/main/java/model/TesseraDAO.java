@@ -60,6 +60,24 @@ public class TesseraDAO {
               return r;
 		}
 	
+	public Boolean alreadyExistT(String t) throws SQLException, ClassNotFoundException {
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection con = DriverManager.getConnection(URL, USER, PASS);
+		PreparedStatement stmt;
+	
+		stmt = con.prepareStatement("SELECT codicetessera FROM tessera WHERE tessera.codicetessera = ?");
+		stmt.setString(1, t);
+		ResultSet rs = stmt.executeQuery();
+		try {
+			while(rs.next()) {
+				return true;
+			}
+		} catch (SQLException e1) {
+			return false;
+		}
+		return false;
+	}
+	
 	
 	
 }

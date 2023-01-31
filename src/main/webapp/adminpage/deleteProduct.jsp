@@ -27,7 +27,7 @@
 	   session.setAttribute("emailutente", email);
 	  session.setAttribute("adminRoles", role); %>
 
-	<jsp:include page="headerAdminPage.jsp"></jsp:include>
+		<jsp:include page="../headerEdit.jsp"></jsp:include>
 
 	<main class="form-signin w-100 m-auto">
 		<h1 class="h3 mb-3 fw-normal">Elimina un prodotto</h1>

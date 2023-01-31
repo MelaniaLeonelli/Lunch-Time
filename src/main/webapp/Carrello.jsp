@@ -47,6 +47,7 @@
 				class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
 				<%System.out.println(emailutente+"buonasè");
+				Boolean Mancante=Boolean.FALSE;
 				ArrayList<Contiene> carrello = (ArrayList<Contiene>) request.getAttribute("array");System.out.println(request.getAttribute("array"));
 	DecimalFormat decimalFormat = new DecimalFormat("#.##");
 	ProdottoDAO pDAO = new ProdottoDAO();%>
@@ -65,6 +66,11 @@
 								<div class="text-center">
 									<!-- Product name-->
 									<h5 class="fw-bolder"><%=(pDAO.getProduct(carrello.get(i).getIdprodotto())).getNome()%></h5>
+									<!-- Product Availability-->
+									<%int d=(pDAO.getProduct(carrello.get(i).getIdprodotto())).getDisponibile(); %>
+									<%if(d==0){ %>
+									<h6 class="fw-bolder">Prodotto NON Disponibile</h6>
+									<%} Mancante=Boolean.TRUE; %>
 									<!-- Product price-->
 									Euro <%=(pDAO.getProduct(carrello.get(i).getIdprodotto())).getPrezzo()%>
 								</div>
@@ -91,6 +97,7 @@
 			Totale: Euro <%=decimalFormat.format(cDAO.getTotal((String)session.getAttribute("emailutente")))%>
 			<%}; %>
 		</p>
+		<%session.setAttribute("mancante", Mancante); %>
 		<%if(carrello.size() != 0){%>
 		<div class="text-center">
 			<a class="lunchtime btn btn-outline-dark mt-auto"

@@ -41,13 +41,10 @@
   <jsp:include page="headerUtente.jsp"></jsp:include>
   <%} %>
 
-  
-
+ 
   <%Ordine o = (Ordine) request.getAttribute("o");%>
 
-  <div id="formdivAlto">
-    <h3>Grazie per aver effettuato l'ordine!</h3>
-  </div>
+  <div id="formdivAlto"><h3>Grazie per aver effettuato l'ordine!</h3></div>
   
   <div id="formdivAlto">
     <h3>Ecco il tuo codice Ordine: <%=code%></h3>
@@ -56,7 +53,6 @@
   <label> <a href="index.jsp" id="purpleLink"> Torna alla
       home</a>
   </label>
-
 
 
   

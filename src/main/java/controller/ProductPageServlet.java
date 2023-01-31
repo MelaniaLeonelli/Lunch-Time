@@ -31,7 +31,7 @@ public class ProductPageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String emailutente = (String) request.getSession().getAttribute("emailutente");
 		Boolean role = (Boolean) request.getSession().getAttribute("adminRoles");
-		String pcode = request.getParameter("idcode");
+		String pcode = request.getParameter("pcode");
 		
 		ProdottoDAO pDAO = new ProdottoDAO();
 		Prodotto p = new Prodotto();

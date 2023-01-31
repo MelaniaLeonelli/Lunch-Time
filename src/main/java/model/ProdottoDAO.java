@@ -33,7 +33,7 @@ public class ProdottoDAO {
       return null;
     }
   }
-  
+ 
   public ArrayList<Prodotto> doRetrieveByCategoria(String cat) throws ClassNotFoundException, SQLException{
     ArrayList<Prodotto> prodotti = new ArrayList<Prodotto>();
     Class.forName("com.mysql.cj.jdbc.Driver");

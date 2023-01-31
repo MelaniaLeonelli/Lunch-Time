@@ -34,8 +34,7 @@
 	notRegistred = (Boolean) session.getAttribute("nonRegistrato");
 
 	if (notRegistred == true){%>
-	<h4 class="h3 mb-3 fw-normal" id="loginWrongMessage">Email o
-		Password errati!</h4>
+	<h4 class="h3 mb-3 fw-normal" id="loginWrongMessage">Email o Password errati!</h4>
 	<label> <a href="login.jsp" id="loginLink"> Torna al login</a>
 	</label>
 	<%}

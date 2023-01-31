@@ -41,6 +41,7 @@ public class ExecuteOrderServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	String emailutente = (String) request.getSession().getAttribute("emailutente");
 	Boolean role = (Boolean) request.getSession().getAttribute("adminRoles");
+	Boolean mancante = (Boolean) request.getSession().getAttribute("mancante");
     int latest = 0;
     double tot = 0;
     LocalDate date = LocalDate.now();
@@ -75,6 +76,16 @@ public class ExecuteOrderServlet extends HttpServlet {
     }
     latest++;
     System.out.println("codice ordine"+latest);
+    if(mancante==Boolean.TRUE)
+	{
+		request.getSession().setAttribute("emailutente", emailutente);
+	    request.getSession().setAttribute("adminRoles", role);
+		request.getSession().setAttribute("mancante", mancante);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("saldoinsufficiente.jsp");
+	    dispatcher.forward(request, response);
+	}
+    
+    
     
     try {
     	int x=aDAO.verificaSaldo(tot, emailutente);

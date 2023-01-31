@@ -34,17 +34,20 @@ public class RegisterServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String email = request.getParameter("emailutente");
+		String tessera = request.getParameter("codicetessera");
 		UtenteDAO uDAO = new UtenteDAO();
 		TesseraDAO tDAO = new TesseraDAO();
 		RequestDispatcher dispatcher;
 		
 		try {
-			if(uDAO.alreadyExist(email)){
+			if(uDAO.alreadyExist(email) || tDAO.alreadyExistT(tessera)){
 				request.getSession().setAttribute("utenteEsistente", Boolean.TRUE);
 				dispatcher = request.getRequestDispatcher("registerResult.jsp");
 				dispatcher.forward(request, response);
 			}
-			else {
+			
+			
+			else  {
 				request.getSession().setAttribute("utenteEsistente", Boolean.FALSE);
 				String em = request.getParameter("emailutente");
 				String nomeutente = request.getParameter("nomeutente");

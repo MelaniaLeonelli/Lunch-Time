@@ -37,7 +37,6 @@ session.setAttribute("adminRoles", role);
 	<%} %>
 
 
-	<jsp:include page="searchbar.jsp"></jsp:include>
 	
 	<main class="form-signin w-100 m-auto">
 		<input type="image" src="logo.png" id="logo_margin" width="60%"

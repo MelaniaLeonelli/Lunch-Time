@@ -21,15 +21,15 @@
 </head>
 <body id="corpo">
 
-	<jsp:include page="headerAdminPage.jsp"></jsp:include>
+		<jsp:include page="../headerEdit.jsp"></jsp:include>
 
 	<main class="form-signin w-100 m-auto">
 
-		<form action="../AddToDBServlet" method=post>
+		<form action="../AddToDBServlet" id="editForm" onsubmit="validate()" method=post  >
 
 			<h1 class="h3 mb-3 fw-normal">Aggiungi un prodotto al Database</h1>
 
-			<div class="form-floating" id="formdiv">
+			<div class="form-floating" onsubmit="validate()" id="formdiv">
 				<input type="text" class="form-control" id="idp"
 					onfocus="getFocusCF()" onblur="blurInput()" type="text" name="idp"
 					required placeholder="idprodotto"> <label for="idp">Codice
@@ -46,6 +46,7 @@
 					name="categoria" required placeholder="Categoria"> <label
 					for="categoria">Categoria</label>
 			</div>
+			
 		
 			<div class="form-floating" id="formdiv">
 				<input type="text" class="form-control" id="prezzo"
@@ -63,11 +64,19 @@
 					onfocus="getFocusCAP()" onblur="blurInput()" type="text"
 					name="descrizione" placeholder="Descrizione"> <label for="descrizione">Descrizione</label>
 			</div>
-			<input type="submit" id="loginBtn"
+			<input type="submit" id="addBtn"
 				class="w-100 btn btn-lg btn-primary" value="Aggiungi al db"><br>
 		</form>
 
 	</main>
+	<script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+  <script src="../js/jsValidate.js">
+  </script>
 
 	<jsp:include page="adminFooter.html"></jsp:include>
 

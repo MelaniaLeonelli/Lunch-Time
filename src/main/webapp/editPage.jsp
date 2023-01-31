@@ -32,11 +32,11 @@
 	  session.setAttribute("adminRoles", role);
 	 %>
 
-	<jsp:include page="headerEditPage.jsp"></jsp:include>
+	<jsp:include page="headerEdit.jsp"></jsp:include>
 
 	<main class="form-signin w-100 m-auto">
 
-		<form action="ProductUpdateServlet" id="editForm">
+		<form action="ProductUpdateServlet" id="editForm" onsubmit="validate()">
         <label for "nome"><b>IdProdotto</b>:</label>    
 		<input type="text" class="form-control" id="pcode" type = "text" name="pcode" onblur="blurInput()" readonly placeholder="<%=p.getIdprodotto()%>" value="<%=p.getIdprodotto()%>"> 
 	<label for "nome"><b>Nome</b>:</label>
@@ -66,6 +66,16 @@
 
 	</main>
 
+<script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+  <script src="js/jsValidate.js">
+  </script>
+	
+	
 	<jsp:include page="/adminpage/editFooter.html"></jsp:include>
 
 	<script>

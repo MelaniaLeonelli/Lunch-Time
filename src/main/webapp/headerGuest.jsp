@@ -42,7 +42,7 @@
 
 				<div class="text-end" id="headerButton">
 					<div class="dropdown">
-						<button class="btn btn-outline-light me-2" id="loginBtn">Social</button>
+						<button class="btn btn-outline-light me-2" id="SocialBtn">Social</button>
 						<div class="dropdown-content">
 							<ul
 								class="dropdown-menu dropdown-menu-dark d-block position-static mx-0 border-0 shadow w-220px">

@@ -25,6 +25,7 @@
 
   <%String email = (String) session.getAttribute("emailutente");
     String name = (String) session.getAttribute("name");
+    Boolean Mancante = (Boolean) session.getAttribute("mancante");
     Boolean role = (Boolean) session.getAttribute("adminRoles");
     session.setAttribute("emailutente", email);
 	session.setAttribute("adminRoles", role);
@@ -40,22 +41,23 @@
   <jsp:include page="headerUtente.jsp"></jsp:include>
   <%} %>
 
-  <jsp:include page="searchbar.jsp"></jsp:include>
+<%if(Mancante==Boolean.TRUE){ %>
+ <div id="formdivAlto"><h3>Uno dei Tuoi Prodotti non è disponibile!</h3></div>
+ <label> <a href="CartServlet" id="purpleLink"> Rimuovilo</a>
+  </label>
+ <%} else { %>
 
   <%Ordine o = (Ordine) request.getAttribute("o");%>
 
-  <div id="formdivAlto">
-    <h3>Il tuo Saldo è insufficiente!</h3>
-  </div>
+
+  <div id="formdivAlto"><h3>Il tuo Saldo è insufficiente!</h3></div>
 
   <label> <a href="RicaricaSaldo.jsp" id="purpleLink"> Ricarica Subito!</a>
   </label>
+<% }%>
 
 
 
-  <script
-    src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="js/ajaxsearch.js"></script>
 
   <div id="footerposOrdEff">
     <jsp:include page="footer.html"></jsp:include>

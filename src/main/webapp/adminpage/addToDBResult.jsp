@@ -41,15 +41,13 @@
     <form action="AddPreferitiServlet" method="post">
     <%if(esiste== Boolean.TRUE) 
     {%>
-     <h1 class="h3 mb-3 fw-normal" id="registerEff">Prodotto Già Presente Nel Catalogo.
-      </h1>
+     <h1 class="h3 mb-3 fw-normal" id="registerEff">Prodotto Già Presente Nel Catalogo!</h1>
      
       <label> <a href="CatalogoServlet" id="loginLink"> Torna al catalogo</a>
       </label>
       
     <% }else {%>
-      <h1 class="h3 mb-3 fw-normal" id="registerEff">Prodotto Aggiunto con Successo!
-      </h1>
+      <h1 class="h3 mb-3 fw-normal" id="registerEff">Prodotto Aggiunto con Successo!</h1>
      
       <label> <a href="CatalogoServlet" id="loginLink"> Torna al catalogo</a>
       </label>
